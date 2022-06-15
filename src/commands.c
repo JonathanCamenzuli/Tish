@@ -8,3 +8,18 @@ void exit_tish(char **args)
 {
     exit(EXIT_SUCCESS);
 }
+
+void cd_tish(char **args)
+{
+    if (*args)
+    {
+        if (args[1] == NULL || strcmp(args[1], "~") == 0)
+            chdir(getenv("HOME"));
+        else if (chdir(args[1]) == -1)
+        {
+            printf("-tish: cd: %s: No such file or directory\n", args[1]);
+            return EXIT_FAILURE;
+        }
+    }
+    return EXIT_SUCCESS;
+}
