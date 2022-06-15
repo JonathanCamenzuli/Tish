@@ -39,3 +39,10 @@ void cwd_tish(char **args)
     return EXIT_SUCCESS;
 
 }
+
+void ver_tish(char **args)
+{
+    //To be implemented more in detail
+    printf("tinyshell v1.0");
+    printf("jonathan camenzuli (c) 2022");
+}

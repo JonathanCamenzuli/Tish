@@ -31,4 +31,11 @@ void cd_tish(char **args);
  */
 void cwd_tish(char **args);
 
+/**
+ * @brief Prints information about tish (NOT FULLY IMPLEMENTED)
+ * 
+ * @param args Arguments: Ignored
+ */
+void ver_tish(char **args);
+
 #endif
