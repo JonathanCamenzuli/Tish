@@ -24,4 +24,11 @@ void exit_tish(char **args);
  */
 void cd_tish(char **args);
 
+/**
+ * @brief Prints the current working directory
+ * 
+ * @param args Arguments: Ignored
+ */
+void cwd_tish(char **args);
+
 #endif

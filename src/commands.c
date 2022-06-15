@@ -23,3 +23,19 @@ void cd_tish(char **args)
     }
     return EXIT_SUCCESS;
 }
+
+void cwd_tish(char **args)
+{
+    char cwdStr[100];
+
+    if (getcwd(cwdStr, 100))
+        printf("%s\n", cwdStr);
+    else
+    {
+        perror("getcwd failed!");
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
+
+}
