@@ -36,3 +36,17 @@ arg_t* init_arg()
     return str;
 }
 
+void print_arg(arg_t* arg)
+{
+    for (int i = 0; i < (arg->size-1); i++)
+        printf("%s\n", arg->args[i]);
+}
+
+void free_args(arg_t* arg)
+{
+    for (int i = 0; i < (arg->size); i++)
+        free(arg->args[i]);
+    free(arg->args);
+    free(arg);
+}
+

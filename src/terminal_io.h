@@ -66,4 +66,11 @@ void free_str(string_t* str);
  */
 arg_t* init_arg();
 
+/**
+ * @brief Output the argument "object"
+ * 
+ * @param arg Argument to output
+ */
+void print_arg(arg_t* arg);
+
 #endif
