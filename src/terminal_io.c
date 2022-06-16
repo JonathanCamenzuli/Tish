@@ -30,5 +30,3 @@ arg_t* init_arg()
     return str;
 }
 
-
-
