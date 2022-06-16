@@ -21,6 +21,12 @@ void print_str(string_t* str)
         printf("%s", str->string[i]);
 }
 
+void free_str(string_t* str)
+{
+    free(str->string);
+    free(str);
+}
+
 arg_t* init_arg()
 {
     string_t *str = (string_t*)malloc(sizeof(string_t));

@@ -38,6 +38,28 @@ typedef struct
 string_t* init_str();
 
 /**
+ * @brief Get the length of string "object"
+ * 
+ * @param str String to get length from
+ * @return int length of string
+ */
+int get_str_length(string_t* str);
+
+/**
+ * @brief Output the string "object"
+ * 
+ * @param str String to output
+ */
+void print_str(string_t* str);
+
+/**
+ * @brief Free memory allocated to string
+ * 
+ * @param str String to free memory allocated to it
+ */
+void free_str(string_t* str);
+
+/**
  * @brief Initialise the argument composite data type
  * 
  * @return arg_t initialised, memory allocated argument
