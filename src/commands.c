@@ -1,3 +1,4 @@
+#include "commands.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -45,4 +46,31 @@ void ver_tish(char **args)
     //To be implemented more in detail
     printf("tinyshell v1.0");
     printf("jonathan camenzuli (c) 2022");
+}
+
+tishCommand_t execTishCommands[TISH_COMMANDS_NO] =
+{
+    {"exit", &exit_tish},
+    {"cd", &cd_tish},
+    {"cwd", &cwd_tish},
+    {"ver", &ver_tish}
+};
+
+int execTishCommand(char* name, char **args)
+{
+    bool doesCommandExist = false;
+    for (int i = 0; i < TISH_COMMANDS_NO; i++)
+    {
+        if (strncmp(execTishCommands[i].name, name) == 0)
+        {
+            doesCommandExist = true;
+            execTishCommands[i].func(args);
+            return EXIT_SUCCESS;
+        }
+    }
+
+    if (doesCommandExist == false)
+        return EXIT_FAILURE;
+    
+    return EXIT_SUCCESS;
 }

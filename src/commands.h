@@ -7,8 +7,26 @@
  * 
  */
 
+#define TISH_COMMANDS_NO 4
+
 #ifndef __COMMANDS_H
 #define __COMMANDS_H
+
+/**
+ * @brief A data structure that represents a function used in a command
+ * 
+ */
+typedef int (*tishFunction_t)(char **);
+
+/**
+ * @brief A struct that a tish command
+ * 
+ */
+typedef struct 
+{
+    char *name;             /**< the name of the command itself */
+    tishFunction_t func;    /**< the function which corresponds to the command */
+}tishCommand_t;
 
 /**
  * @brief Terminates the shell
@@ -37,5 +55,14 @@ void cwd_tish(char **args);
  * @param args Arguments: Ignored
  */
 void ver_tish(char **args);
+
+/**
+ * @brief Launches a built-in command
+ * 
+ * @param name Command entered in CLI
+ * @param args Argument/s
+ * @return int 0 if successfuly, 1 if failed
+ */
+int execTishCommand(char* name, char **args);
 
 #endif
