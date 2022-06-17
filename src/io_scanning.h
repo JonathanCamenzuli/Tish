@@ -1,14 +1,14 @@
 /**
  * @file terminal_io.h
  * @author Jonathan Camenzuli
- * @brief CPS1012 Assignment - Terminal Input and Output (Task 3)
+ * @brief CPS1012 Assignment - Terminal Input and Output and Advanced Scanning (Tasks 3 & 4)
  * 
  * @copyright Copyright (c) 2022
  * 
  */
 
-#ifndef __TERMINAL_IO_H
-#define __TERMINAL_IO_H
+#ifndef __IO_SCANNING_H
+#define __IO_SCANNING_H
 
 /**
  * @brief A struct that represents a string

@@ -1,4 +1,4 @@
-#include "terminal_io.h"
+#include "io_scanning.h"
 #include <stdlib.h>
 
 string_t* init_str()
