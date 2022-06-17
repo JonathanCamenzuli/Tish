@@ -22,4 +22,32 @@
  */
 int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appendOut, bool asyncEnable);
 
+/**
+ * @brief Works like freopen() from stdio.h but uses file descriptors instead
+ * 
+ * @param fd        File descriptor
+ * @param pathName  Path of file to open
+ * @param flags     Method of which the file is to be opened
+ * @param mode      Determines permissions of file (if created)
+ * @return int      File descriptor or its duplicate
+ */
+int reopen(int fd, char* pathName, int flags, unsigned int mode);
+
+/**
+ * @brief Sets up redirection for file input 
+ * 
+ * @param input File input
+ * @return int  File descriptor or its duplicate
+ */
+int redirectInput(char* input);
+
+/**
+ * @brief Sets up redirection for file output
+ * 
+ * @param output        File output
+ * @param appendFlag    Method of which the file is to be opened
+ * @return int          File descriptor or its duplicate
+ */
+int redirectOutput(char* output, int appendFlag);
+
 #endif

@@ -1,7 +1,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <ctype.h>
 #include <sys/wait.h>
 
 int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appendOut, bool asyncEnable)
@@ -134,4 +136,29 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
     }
 
     return EXIT_SUCCESS;
+}
+
+int reopen(int fd, char* pathName, int flags, mode_t mode)
+{
+    int openFd = open(pathName, flags, mode);
+    if ((openFd == fd) || (openFd < 0))
+        return openFd;
+
+    int dupFd = dup2(openFd, fd);
+    close(openFd);
+
+    if (dupFd == -1)
+        return dupFd;
+    else
+        return fd;
+}
+
+int redirectInput(char* input)
+{
+    return(reopen(STDERR_FILENO, input, O_RDONLY, S_IRUSR));
+}
+
+int redirectOutput(char* output, int appendFlag)
+{
+    return(reopen(STDOUT_FILENO, output, appendFlag | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH));
 }
