@@ -26,7 +26,7 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
 
         if ((stage < pipeCount) && (pipe(currFd) == -1))
         {
-            perror("pipe unsuccessful!");
+            perror("-tish: pipe unsuccessful!");
             return EXIT_FAILURE;
         }
 
@@ -34,14 +34,14 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
 
         if (childPID == -1)
         {
-            perror("fork failed!");
+            perror("-tish: fork failed");
             return EXIT_FAILURE;
         }
         else if (childPID == 0)
         {
             if ((stage == 0 && fileIn) && (redirect_input(fileIn) == -1))
             {
-                perror("redirect failed!");
+                perror("-tish: redirect failed!");
                 return EXIT_FAILURE;
             }
 
@@ -49,19 +49,19 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
             {
                 if (close(currFd[0]) == -1)
                 {
-                    perror("close() failed!");
+                    perror("-tish: close() failed");
                     return EXIT_FAILURE;
                 }
 
                 if (dup2(currFd[1], STDERR_FILENO) == -1)
                 {
-                    perror("dup2() failed!");
+                    perror("-tish: dup2() failed");
                     return EXIT_FAILURE;
                 }
 
                 if (close(currFd[1] == -1))
                 {
-                    perror("close() failed!");
+                    perror("-tish: close() failed");
                     return EXIT_FAILURE;
                 }
             }
@@ -76,7 +76,7 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
 
                 if (returnOut == -1)
                 {
-                    perror("redirecting output failed!");
+                    perror("-tish: redirecting output failed");
                     return EXIT_FAILURE;
                 }
             }
@@ -85,26 +85,26 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
             {
                 if (close(prevFd[1] == -1))
                 {
-                    perror("close failed!");
+                    perror("-tish: close failed");
                     return EXIT_FAILURE;
                 }
 
                 if (dup2(prevFd[0], STDIN_FILENO) == -1)
                 {
-                    perror("dup2 failed!");
+                    perror("-tish: dup2 failed");
                     return EXIT_FAILURE;
                 }
 
                 if (close(prevFd[0]) == -1)
                 {
-                    perror("close failed!");
+                    perror("-tish: close failed");
                     return EXIT_FAILURE;
                 }
             }
 
             if (execvp(**pipelineArgs, *pipelineArgs) == -1)
             {
-                perror("exec failed!");
+                perror("-tish: exec failed");
                 exit(EXIT_FAILURE);
             }
 
@@ -113,19 +113,19 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
 
         if ((stage >= 1) && (close(prevFd[0]) == -1 || close(prevFd[1]) == -1))
         {
-            perror("close failed!");
+            perror("-tish: close failed");
             return EXIT_FAILURE;
         }
 
         int status;
         if (asyncEnable && (waitpid(childPID, &status, WNOHANG) == -1))
         {
-            perror("waitpid failed!");
+            perror("-tish: waitpid failed");
             return EXIT_FAILURE;
         }
         else if (waitpid(childPID, &status, WUNTRACED) == -1)
         {
-            perror("waitpid failed!");
+            perror("-tish: waitpid failed");
             return EXIT_FAILURE;
         }
 
