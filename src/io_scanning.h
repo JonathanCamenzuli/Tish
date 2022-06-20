@@ -78,7 +78,7 @@ int getTishInput(char* inputBuffer);
  * 
  * @param inputBuffer   A buffer which stores the input made from the user
  * @param execVars      An instance of the execVars_t struct 
- * @return int          If 0, successful, if 1, failure
+ * @return int          If 0, successful, if 1, failure, if 2, continue statement
  */
 int validateTishInput(char* inputBuffer, execVars_t* execVars);
 
