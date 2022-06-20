@@ -35,7 +35,7 @@
 typedef struct
 {
     char*** pipeline;       /**< Contains the pipeline itself*/
-    char inputBuffer;       /**< A buffer which stores the input made from the user */
+    char* inputBuffer;      /**< A buffer which stores the input made from the user */
     int commandPipeCount;   /**< Keep track of command in the pipeline */
     int command_i;          /**< Index for commands */
     int arg_i;              /**< Index for arguments */
@@ -82,5 +82,12 @@ int getTishInput(char* inputBuffer);
  * @return int          If 0, successful, if 1, failure, if 2, continue statement 
  */
 int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars);
+
+/**
+ * @brief Process and execute user input
+ * 
+ * @return int  If 0, successful, if 1, failure
+ */
+int processInputExec();
 
 #endif

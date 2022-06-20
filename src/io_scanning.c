@@ -19,6 +19,9 @@ int getTishInput(char* inputBuffer)
 
 int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
 {
+    char* fileInParam;
+    char* fileOutParam;
+
     // First and last argument cannot be metacharacters
     if ((index_i == 0 || index_i == strlen(inputBuffer) - 2) 
         && (inputBuffer[index_i] == GT_CHAR)
@@ -71,13 +74,13 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
         }
 
         *execVars = (execVars_t)
-        {
-            .metacharPipe = false,
-            .metacharOutRedir = true,
-            .outRedir = true,
-            .appendOut = true,
-            .outRedirWait = true
-        };
+            {
+                .metacharPipe = false,
+                .metacharOutRedir = true,
+                .outRedir = true,
+                .appendOut = true,
+                .outRedirWait = true
+            };
 
         execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
         execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
@@ -101,12 +104,12 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
         }
 
         *execVars = (execVars_t)
-        {
-            .metacharPipe = false,
-            .metacharOutRedir = true,
-            .outRedir = true,
-            .outRedirWait = true,
-        };
+            {
+                .metacharPipe = false,
+                .metacharOutRedir = true,
+                .outRedir = true,
+                .outRedirWait = true,
+            };
 
         execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
         execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
@@ -127,13 +130,13 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
         }
 
         *execVars = (execVars_t)
-        {
-            .inRedir = true,
-            .metacharPipe = false,
-            .metacharOutRedir = false,
-            .metacharInRedir = true,
-            .inRedirWait = true,
-        };
+            {
+                .inRedir = true,
+                .metacharPipe = false,
+                .metacharOutRedir = false,
+                .metacharInRedir = true,
+                .inRedirWait = true,
+            };
 
         execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
         execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
@@ -186,13 +189,13 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
             }
 
             *execVars = (execVars_t)
-            {
-                .metacharPipe = true,
-                .metacharOutRedir = false,
-                .metacharInRedir = false,
-                .arg_i = 0,
-                .char_i = 0
-            };
+                {
+                    .metacharPipe = true,
+                    .metacharOutRedir = false,
+                    .metacharInRedir = false,
+                    .arg_i = 0,
+                    .char_i = 0
+                };
 
             execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
             execVars->pipeline[execVars->command_i][execVars->arg_i + 1] = NULL;
@@ -321,9 +324,6 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
         else
             execVars->fileIn = NULL;
 
-        char* fileInParam;
-        char* fileOutParam;
-
         if (execVars->inRedir)
             fileInParam = execVars->fileIn;
         else
@@ -344,24 +344,24 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
 
 
             *execVars = (execVars_t)
-            {
-                .outRedir = false,
-                .inRedir = false,
-                .appendOut = false,
-                .pipe = false,
-                .metacharPipe = false,
-                .metacharOutRedir = false,
-                .metacharInRedir = false,
-                .metacharQuote = false,
-                .arg_i = 0,
-                .char_i = 0,
-                .commandPipeCount = 1,
-                .out_i = 0,
-                .in_i = 0,
-                .pipe = true,
-                .outRedirWait = false,
-                .inRedirWait = false
-            };
+                {
+                    .outRedir = false,
+                    .inRedir = false,
+                    .appendOut = false,
+                    .pipe = false,
+                    .metacharPipe = false,
+                    .metacharOutRedir = false,
+                    .metacharInRedir = false,
+                    .metacharQuote = false,
+                    .arg_i = 0,
+                    .char_i = 0,
+                    .commandPipeCount = 1,
+                    .out_i = 0,
+                    .in_i = 0,
+                    .pipe = true,
+                    .outRedirWait = false,
+                    .inRedirWait = false
+                };
 
             execVars->command_i++;
 
@@ -381,24 +381,24 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
             execVars->fileIn = malloc(MAX_FILENAME_LEN*sizeof(char));
 
             *execVars = (execVars_t)
-            {
-                .outRedir = false,
-                .inRedir = false,
-                .appendOut = false,
-                .pipe = true,
-                .metacharPipe = false,
-                .metacharOutRedir = false,
-                .metacharInRedir = false,
-                .metacharQuote = false,
-                .arg_i = 0,
-                .char_i = 0,
-                .commandPipeCount = 1,
-                .out_i = 0,
-                .in_i = 0,
-                .pipe = true,
-                .outRedirWait = false,
-                .inRedirWait = false
-            };
+                {
+                    .outRedir = false,
+                    .inRedir = false,
+                    .appendOut = false,
+                    .pipe = true,
+                    .metacharPipe = false,
+                    .metacharOutRedir = false,
+                    .metacharInRedir = false,
+                    .metacharQuote = false,
+                    .arg_i = 0,
+                    .char_i = 0,
+                    .commandPipeCount = 1,
+                    .out_i = 0,
+                    .in_i = 0,
+                    .pipe = true,
+                    .outRedirWait = false,
+                    .inRedirWait = false
+                };
 
             execVars->command_i++;
 
@@ -406,4 +406,315 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
         }
         return 2;
     }
+}
+
+int processInputExec()
+{
+    char* fileInParam;
+    char* fileOutParam;
+
+    execVars_t* execVars;
+    execVars->pipeline = malloc(MAX_TISH_PIPES*MAX_TISH_COMMANDS*sizeof(*(execVars->pipeline)));
+
+    for (int i = 0; i < (MAX_TISH_PIPES*MAX_TISH_COMMANDS); i++)
+    {
+        execVars->pipeline[i] = malloc(MAX_TISH_ARGS*sizeof(*(execVars->pipeline[i])));
+        for (int j = 0; j < MAX_TISH_ARGS; j++)
+            execVars->pipeline[i][j] = malloc(MAX_TISH_TOKEN_LEN*sizeof(*(execVars->pipeline[i][j])));
+    }
+
+    if (getTishInput(execVars->inputBuffer) == 1)
+        return EXIT_FAILURE;
+
+    *execVars = (execVars_t)
+        {
+            .commandPipeCount = 1,
+            .command_i = 0,
+            .arg_i = 0,
+            .char_i = 0,
+            .metacharPipe = false,
+            .metacharOutRedir = false,
+            .metacharInRedir = false,
+            .metacharQuote = false,
+            .outRedir = false,
+            .inRedir = false,
+            .appendOut = false,
+            .pipe = true,
+            .fileOut = malloc(MAX_FILENAME_LEN*sizeof(char)),
+            .fileIn = malloc(MAX_FILENAME_LEN*sizeof(char)),
+            .out_i = 0,
+            .in_i = 0,
+            .outRedirWait = false,
+            .inRedirWait = false,
+            .charFound = false,
+            .waitForSColon = false,
+            .exec = true
+        };
+
+    for (int i = 0; i < strlen(execVars->inputBuffer); i++)
+    {
+        if (execVars->waitForSColon)
+        {
+            if ((i < strlen(execVars->inputBuffer)-1) && (execVars->inputBuffer[i] == SCOLON_CHAR))
+            {
+                execVars->waitForSColon = false;
+                if (execVars->exec)
+                {
+                    if (i+1 >= MAX_TISH_COMMANDS)
+                    {
+                        fprintf(stderr, "-tish: too many commands passed\n");
+                        return EXIT_FAILURE;
+                    }
+                    if (i == strlen(execVars->inputBuffer)-1)
+                        continue;
+                    
+                    execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
+                    execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
+
+                    if (execVars->outRedir)
+                        execVars->fileOut[strlen(execVars->fileOut)] = '\0';
+                    else
+                        execVars->fileOut = NULL;
+
+                    if (execVars->inRedir)
+                        execVars->fileIn[strlen(execVars->fileIn)] = '\0';
+                    else
+                        execVars->fileIn = NULL;
+
+                    if (execVars->inRedir)
+                        fileInParam = execVars->fileIn;
+                    else
+                        fileInParam = NULL;
+
+                    if (execVars->outRedir)
+                        fileOutParam = execVars->fileOut;
+                    else
+                        fileOutParam = NULL;
+
+                    if (execVars->commandPipeCount == 1 && execTishCommand(**(execVars->pipeline + execVars->command_i), *(execVars->pipeline + execVars->command_i)) == 0)
+                    {
+                        free(execVars->fileOut);
+                        execVars->fileOut = malloc(MAX_FILENAME_LEN*sizeof(char));
+
+                        free(execVars->fileIn);
+                        execVars->fileIn = malloc(MAX_FILENAME_LEN*sizeof(char));
+
+                        *execVars = (execVars_t)
+                            {
+                                .commandPipeCount = 1,
+                                .arg_i = 0,
+                                .char_i = 0,
+
+                                .metacharPipe = false,
+                                .metacharOutRedir = false,
+                                .metacharInRedir = false,
+                                .metacharQuote = false,
+
+                                .outRedir = false,
+                                .inRedir = false,
+                                .appendOut = false,
+
+                                .pipe = true,
+
+                                .out_i = 0,
+                                .in_i = 0,
+
+                                .outRedirWait = false,
+                                .inRedirWait = false,
+                            };
+
+                        execVars->command_i += 1;
+                        continue;
+                    }
+                    else if (forkExecPipe(execVars->pipeline + (execVars->command_i - (execVars->commandPipeCount-1)), fileInParam, fileOutParam, execVars->appendOut, false) == 1)
+                    {
+                        fprintf(stderr, "-tish: execution failed\n");
+                        return EXIT_FAILURE;
+                    }
+                    else
+                    {
+                        free(execVars->fileOut);
+                        execVars->fileOut = malloc(MAX_FILENAME_LEN*sizeof(char));
+                        free(execVars->fileIn);
+                        execVars->fileIn = malloc(MAX_FILENAME_LEN*sizeof(char));
+
+                        *execVars = (execVars_t)
+                            {
+                                .commandPipeCount = 1,
+                                .arg_i = 0,
+                                .char_i = 0,
+
+                                .metacharPipe = false,
+                                .metacharOutRedir = false,
+                                .metacharInRedir = false,
+                                .metacharQuote = false,
+
+                                .outRedir = false,
+                                .inRedir = false,
+                                .appendOut = false,
+
+                                .pipe = true,
+
+                                .out_i = 0,
+                                .in_i = 0,
+
+                                .outRedirWait = false,
+                                .inRedirWait = false,
+                            };
+
+                        execVars->command_i += 1;
+                        continue;
+                    }
+                }
+                else
+                {
+                    free(execVars->fileOut);
+                    execVars->fileOut = malloc(MAX_FILENAME_LEN*sizeof(char));
+                    free(execVars->fileIn);
+                    execVars->fileIn = malloc(MAX_FILENAME_LEN*sizeof(char));
+
+                    *execVars = (execVars_t)
+                        {
+                            .commandPipeCount = 1,
+                            .arg_i = 0,
+                            .char_i = 0,
+
+                            .metacharPipe = false,
+                            .metacharOutRedir = false,
+                            .metacharInRedir = false,
+                            .metacharQuote = false,
+
+                            .outRedir = false,
+                            .inRedir = false,
+                            .appendOut = false,
+
+                            .pipe = true,
+
+                            .out_i = 0,
+                            .in_i = 0,
+
+                            .outRedirWait = false,
+                            .inRedirWait = false,
+
+                            .exec = true
+                        };
+
+                    execVars->command_i += 1;
+                    continue;
+                }
+            }
+            else if (i == (strlen(execVars->inputBuffer)-1))
+            {
+                if (execVars->inputBuffer[i] == SPACE_CHAR)
+                {
+                    if (execVars->inRedir)
+                        fileInParam = execVars->fileIn;
+                    else
+                        fileInParam = NULL;
+
+                    if (execVars->outRedir)
+                        fileOutParam = execVars->fileOut;
+                    else
+                        fileOutParam = NULL;
+
+                    if (forkExecPipe(execVars->pipeline + (execVars->command_i - (execVars->commandPipeCount-1)), fileInParam, fileOutParam, execVars->appendOut, false) == 1)
+                    {
+                        fprintf(stderr, "-tish: execution failed\n");
+                        return EXIT_FAILURE;
+                    }
+
+                    return EXIT_SUCCESS; 
+                }
+                else
+                    return EXIT_FAILURE;
+            }    
+        }
+        int validateTishInputVar = validateTishInput(execVars->inputBuffer, i, execVars);
+        if (validateTishInputVar == 1)
+            return EXIT_FAILURE;
+        else if (validateTishInputVar == 0)
+            return EXIT_SUCCESS;
+        else
+            continue;
+
+        if (execVars->metacharOutRedir)
+        {
+            execVars->outRedirWait = false;
+            execVars->fileOut[execVars->out_i++] = execVars->inputBuffer[i];
+            continue;
+        }
+        else if (execVars->metacharInRedir)
+        {
+            execVars->inRedirWait = false;
+            execVars->fileIn[execVars->in_i++] = execVars->inputBuffer[i];
+            continue;
+        }
+        else
+        {
+            if (execVars->char_i+1 >= MAX_TISH_TOKEN_LEN)
+            {
+                fprintf(stderr, "-tish: too many characters passed to argument [%c%c%c%c%c...] in pipeline %d\n",
+                    execVars->pipeline[execVars->command_i][execVars->arg_i][0], execVars->pipeline[execVars->command_i][execVars->arg_i][1],
+                    execVars->pipeline[execVars->command_i][execVars->arg_i][2], execVars->pipeline[execVars->command_i][execVars->arg_i][3],
+                    execVars->pipeline[execVars->command_i][execVars->arg_i][4], execVars->command_i + 1);
+                execVars->waitForSColon = true;
+                execVars->exec = false;
+                continue;
+            }
+
+            execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i++] = execVars->inputBuffer[i];
+            execVars->charFound = true;
+            execVars->pipe = false;
+        }
+    }
+
+    if (execVars->metacharQuote)
+    {
+        fprintf(stderr, "-tish: syntax error: unexpected quote\n");
+        return EXIT_FAILURE;
+    }
+
+    execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
+    execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
+
+    if (execVars->outRedir)
+        execVars->fileOut[strlen(execVars->fileOut)] = '\0';
+    else
+        execVars->fileOut = NULL;
+
+    if (execVars->inRedir)
+        execVars->fileIn[strlen(execVars->fileIn)] = '\0';
+    else
+        execVars->fileIn = NULL;
+
+    if (!(execVars->commandPipeCount == 1) && (execTishCommand(**(execVars->pipeline + execVars->command_i), *(execVars->pipeline + execVars->command_i)) == 0))
+    {
+        if (execVars->inRedir)
+            fileInParam = execVars->fileIn;
+        else
+            fileInParam = NULL;
+
+        if (execVars->outRedir)
+            fileOutParam = execVars->fileOut;
+        else
+            fileOutParam = NULL;
+        if (forkExecPipe(execVars->pipeline + (execVars->command_i - (execVars->commandPipeCount-1)), fileInParam, fileOutParam, execVars->appendOut, false) == 1)
+            return EXIT_FAILURE;
+    }
+
+    for (int a = 0; a < (MAX_TISH_PIPES*MAX_TISH_COMMANDS); a++)
+    {
+        for (int b = 0; b < MAX_TISH_ARGS; b++)
+        {
+            free(execVars->pipeline[execVars->command_i][execVars->arg_i]);
+            execVars->pipeline[execVars->command_i][execVars->arg_i] = NULL;
+        }
+        free(execVars->pipeline[execVars->command_i]);
+        execVars->pipeline[execVars->command_i] = NULL;
+    }
+
+    free(execVars->pipeline);
+    execVars->pipeline[execVars->command_i] = NULL;
+
+    return EXIT_SUCCESS;    
 }
