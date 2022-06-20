@@ -7,10 +7,10 @@
  * 
  */
 
-#define TISH_COMMANDS_NO 4
-
 #ifndef __COMMANDS_H
 #define __COMMANDS_H
+
+#define TISH_COMMANDS_NO 4
 
 /**
  * @brief A data structure that represents a function used in a command

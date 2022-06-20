@@ -49,19 +49,19 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
             {
                 if (close(currFd[0]) == -1)
                 {
-                    perror("close failed!");
+                    perror("close() failed!");
                     return EXIT_FAILURE;
                 }
 
                 if (dup2(currFd[1], STDERR_FILENO) == -1)
                 {
-                    perror("dup2 failed!");
+                    perror("dup2() failed!");
                     return EXIT_FAILURE;
                 }
 
                 if (close(currFd[1] == -1))
                 {
-                    perror("close failed!");
+                    perror("close() failed!");
                     return EXIT_FAILURE;
                 }
             }
