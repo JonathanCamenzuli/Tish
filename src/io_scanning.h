@@ -10,6 +10,14 @@
 #ifndef __IO_SCANNING_H
 #define __IO_SCANNING_H
 
+#define GT_CHAR             '>'
+#define LT_CHAR             '<'
+#define VBAR_CHAR           '|'
+#define SPACE_CHAR          ' '
+#define QMARK_CHAR          '\"'
+#define BSLASH_CHAR         '\\'
+#define SCOLON_CHAR         ';'
+
 /**
  * @brief A struct that represents a string
  * 
@@ -72,5 +80,12 @@ arg_t* init_arg();
  * @param arg Argument to output
  */
 void print_arg(arg_t* arg);
+
+/**
+ * @brief Free memory allocated to argument
+ * 
+ * @param arg Argument to free memory allocated to it
+ */
+void free_args(arg_t* arg);
 
 #endif
