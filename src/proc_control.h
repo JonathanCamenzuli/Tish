@@ -7,8 +7,10 @@
  * 
  */
 
-#ifndef __PROC_CONTROL_H
-#define __PROC_CONTROL_H
+#ifndef PROC_CONTROL_H
+#define PROC_CONTROL_H
+
+#include <stdbool.h>
 
 /**
  * @brief Launches an executable using the fork-exec pattern.
@@ -20,7 +22,7 @@
  * @param asyncEnable   If true, program terminates without waiting for pipeline to terminate 
  * @return int 
  */
-int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appendOut, bool asyncEnable);
+int forkExecPipe(char ***pipelineArgs, char *fileIn, char *fileOut, bool appendOut, bool asyncEnable);
 
 /**
  * @brief Works like freopen() from stdio.h but uses file descriptors instead

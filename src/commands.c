@@ -10,7 +10,7 @@ void exit_tish(char **args)
     exit(EXIT_SUCCESS);
 }
 
-void cd_tish(char **args)
+int cd_tish(char **args)
 {
     if (*args)
     {
@@ -25,7 +25,7 @@ void cd_tish(char **args)
     return EXIT_SUCCESS;
 }
 
-void cwd_tish(char **args)
+int cwd_tish(char **args)
 {
     char cwdStr[100];
 
@@ -41,7 +41,7 @@ void cwd_tish(char **args)
 
 }
 
-void ver_tish(char **args)
+int ver_tish(char **args)
 {
     //To be implemented more in detail
     printf("tinyshell v1.0");

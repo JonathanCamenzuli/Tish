@@ -7,8 +7,8 @@
  * 
  */
 
-#ifndef __IO_SCANNING_H
-#define __IO_SCANNING_H
+#ifndef IO_SCANNING_H
+#define IO_SCANNING_H
 
 #include <limits.h>
 #include <stdbool.h>
@@ -60,7 +60,7 @@ typedef struct
 
     bool waitForSColon;     /**< */
 
-    bool exec               /**< Flag for execution */
+    bool exec;               /**< Flag for execution */
 
 }execVars_t;
 

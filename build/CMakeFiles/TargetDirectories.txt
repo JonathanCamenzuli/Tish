@@ -1,0 +1,5 @@
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles/edit_cache.dir
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles/package_source.dir
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles/package.dir
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles/tish.dir

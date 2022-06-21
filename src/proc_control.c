@@ -1,3 +1,4 @@
+#include "proc_control.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -6,7 +7,7 @@
 #include <ctype.h>
 #include <sys/wait.h>
 
-int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appendOut, bool asyncEnable)
+int forkExecPipe(char ***pipelineArgs, char *fileIn, char *fileOut, bool appendOut, bool asyncEnable)
 {
     int childCount = 0;
 
@@ -39,7 +40,7 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
         }
         else if (childPID == 0)
         {
-            if ((stage == 0 && fileIn) && (redirect_input(fileIn) == -1))
+            if ((stage == 0 && fileIn) && (redirectInput(fileIn) == -1))
             {
                 perror("-tish: redirect failed!");
                 return EXIT_FAILURE;
@@ -70,9 +71,9 @@ int forkExecPipe(char ***pipelineArgs[], char *fileIn, char *fileOut, bool appen
             {
                 int returnOut;
                 if (appendOut)
-                    returnOut = redirect_output(fileOut, O_RDWR | O_APPEND);
+                    returnOut = redirectOutput(fileOut, O_RDWR | O_APPEND);
                 else
-                    returnOut = redirect_output(fileOut, O_RDWR | O_TRUNC);
+                    returnOut = redirectOutput(fileOut, O_RDWR | O_TRUNC);
 
                 if (returnOut == -1)
                 {

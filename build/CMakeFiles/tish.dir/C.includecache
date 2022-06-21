@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.c
+proc_control.h
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.h
+stdlib.h
+-
+stdbool.h
+-
+stdio.h
+-
+unistd.h
+-
+fcntl.h
+-
+ctype.h
+-
+sys/wait.h
+-
+
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.h
+stdbool.h
+-
+

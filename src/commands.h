@@ -7,8 +7,8 @@
  * 
  */
 
-#ifndef __COMMANDS_H
-#define __COMMANDS_H
+#ifndef COMMANDS_H
+#define COMMANDS_H
 
 #define TISH_COMMANDS_NO 4
 
@@ -40,21 +40,21 @@ void exit_tish(char **args);
  * 
  * @param args Arguments: Contain the path to be changed. If empty, directory is changed to HOME
  */
-void cd_tish(char **args);
+int cd_tish(char **args);
 
 /**
  * @brief Prints the current working directory
  * 
  * @param args Arguments: Ignored
  */
-void cwd_tish(char **args);
+int cwd_tish(char **args);
 
 /**
  * @brief Prints information about tish (NOT FULLY IMPLEMENTED)
  * 
  * @param args Arguments: Ignored
  */
-void ver_tish(char **args);
+int ver_tish(char **args);
 
 /**
  * @brief Launches a built-in command

@@ -1,8 +1,9 @@
-#include "io_scanning.h"
+#include <string.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "io_scanning.h"
 
 int getTishInput(char* inputBuffer)
 {
@@ -113,7 +114,7 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
 
         execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
         execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
-        return 2;;
+        return 2;
     }
     // Checking for 'Input Redirection' (<) metacharacter
     else if (!(execVars->metacharQuote) && inputBuffer[index_i] == LT_CHAR)
@@ -216,7 +217,7 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
             fprintf(stderr, "-tish: %s: too many arguments passed\n", execVars->pipeline[index_i - (execVars->commandPipeCount-1)][0]);
             execVars->waitForSColon = true;
             execVars->exec = false;
-            return 2;;
+            return 2;
         }
         if (execVars->metacharOutRedir)
         {
@@ -309,7 +310,7 @@ int validateTishInput(char* inputBuffer, int index_i, execVars_t* execVars)
             return EXIT_FAILURE; 
         }
         if (index_i == strlen(inputBuffer) - 1)
-            return 2;;
+            return 2;
         
         execVars->pipeline[execVars->command_i][execVars->arg_i][execVars->char_i] = '\0';
         execVars->pipeline[execVars->command_i][execVars->arg_i+1] = NULL;
@@ -414,6 +415,32 @@ int processInputExec()
     char* fileOutParam;
 
     execVars_t* execVars;
+
+    *execVars = (execVars_t)
+            {
+                    .commandPipeCount = 1,
+                    .command_i = 0,
+                    .arg_i = 0,
+                    .char_i = 0,
+                    .metacharPipe = false,
+                    .metacharOutRedir = false,
+                    .metacharInRedir = false,
+                    .metacharQuote = false,
+                    .outRedir = false,
+                    .inRedir = false,
+                    .appendOut = false,
+                    .pipe = true,
+                    .fileOut = malloc(MAX_FILENAME_LEN*sizeof(char)),
+                    .fileIn = malloc(MAX_FILENAME_LEN*sizeof(char)),
+                    .out_i = 0,
+                    .in_i = 0,
+                    .outRedirWait = false,
+                    .inRedirWait = false,
+                    .charFound = false,
+                    .waitForSColon = false,
+                    .exec = true
+            };
+
     execVars->pipeline = malloc(MAX_TISH_PIPES*MAX_TISH_COMMANDS*sizeof(*(execVars->pipeline)));
 
     for (int i = 0; i < (MAX_TISH_PIPES*MAX_TISH_COMMANDS); i++)
@@ -425,31 +452,6 @@ int processInputExec()
 
     if (getTishInput(execVars->inputBuffer) == 1)
         return EXIT_FAILURE;
-
-    *execVars = (execVars_t)
-        {
-            .commandPipeCount = 1,
-            .command_i = 0,
-            .arg_i = 0,
-            .char_i = 0,
-            .metacharPipe = false,
-            .metacharOutRedir = false,
-            .metacharInRedir = false,
-            .metacharQuote = false,
-            .outRedir = false,
-            .inRedir = false,
-            .appendOut = false,
-            .pipe = true,
-            .fileOut = malloc(MAX_FILENAME_LEN*sizeof(char)),
-            .fileIn = malloc(MAX_FILENAME_LEN*sizeof(char)),
-            .out_i = 0,
-            .in_i = 0,
-            .outRedirWait = false,
-            .inRedirWait = false,
-            .charFound = false,
-            .waitForSColon = false,
-            .exec = true
-        };
 
     for (int i = 0; i < strlen(execVars->inputBuffer); i++)
     {
@@ -716,5 +718,5 @@ int processInputExec()
     free(execVars->pipeline);
     execVars->pipeline[execVars->command_i] = NULL;
 
-    return EXIT_SUCCESS;    
+    return EXIT_SUCCESS;
 }
