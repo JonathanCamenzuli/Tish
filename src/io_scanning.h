@@ -10,82 +10,38 @@
 #ifndef __IO_SCANNING_H
 #define __IO_SCANNING_H
 
-#define GT_CHAR             '>'
-#define LT_CHAR             '<'
-#define VBAR_CHAR           '|'
+
 #define SPACE_CHAR          ' '
 #define QMARK_CHAR          '\"'
 #define BSLASH_CHAR         '\\'
+#define VBAR_CHAR           '|'
+#define GT_CHAR             '>'
+#define AOUTREDIR_CHAR      '>>'
+#define LT_CHAR             '<'
 #define SCOLON_CHAR         ';'
+#define NULL_CHAR           '\0'
 
 /**
- * @brief A struct that represents a string
+ * @brief Tokenises the input made by the user
  * 
+ * @param inputBuffer   Input made by the user
+ * @return char*        Arguments present in input
  */
-typedef struct 
-{
-    char *string;   /**< the string itself */
-    int size;       /**< the size of string itself */
-}string_t;
+char* tokenizer(char* inputBuffer);
 
 /**
- * @brief A struct that represents an argument
+ * @brief Tokenises the pipeline
  * 
+ * @param args      Arguments present in put
+ * @return char***  Command
  */
-typedef struct
-{
-    char **args;    /**< the string itself */
-    int size;       /**< the size of string itself */ 
-}arg_t;
+char*** pipelineTokenizer(char** args);
 
 /**
- * @brief Initialise the string composite data type
+ * @brief Frees the memory allocated to the pipline
  * 
- * @return string_t initialised, memory allocated string
+ * @param pipeline Pipeline to free memory from
  */
-string_t* init_str();
-
-/**
- * @brief Get the length of string "object"
- * 
- * @param str String to get length from
- * @return int length of string
- */
-int get_str_length(string_t* str);
-
-/**
- * @brief Output the string "object"
- * 
- * @param str String to output
- */
-void print_str(string_t* str);
-
-/**
- * @brief Free memory allocated to string
- * 
- * @param str String to free memory allocated to it
- */
-void free_str(string_t* str);
-
-/**
- * @brief Initialise the argument composite data type
- * 
- * @return arg_t initialised, memory allocated argument
- */
-arg_t* init_arg();
-
-/**
- * @brief Output the argument "object"
- * 
- * @param arg Argument to output
- */
-void print_arg(arg_t* arg);
-
-/**
- * @brief Free memory allocated to argument
- * 
- * @param arg Argument to free memory allocated to it
- */
-void free_args(arg_t* arg);
+void freePipeline(char*** pipeline);
 
 #endif
