@@ -22,6 +22,18 @@
 #define NULL_CHAR           '\0'
 
 /**
+ * @brief Special characters which are considered to be invalid
+ *        characters if used improperly in tish
+ * 
+ */
+const char specialTishChars[] = {'~', '`', '#', '$', '&', '*',
+                                 '(', ')', '[', ']', '{', '}',
+                                 ':', '=', '?', '/', '!', '@',
+                                 '\'', QMARK_CHAR, BSLASH_CHAR,
+                                 VBAR_CHAR, GT_CHAR, LT_CHAR,
+                                 SCOLON_CHAR};
+
+/**
  * @brief Tokenises the input made by the user
  * 
  * @param inputBuffer   Input made by the user
