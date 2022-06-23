@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/tish.dir/src/tish.c.o CMakeFiles/tish.dir/src/io_scanning.c.o CMakeFiles/tish.dir/src/commands.c.o CMakeFiles/tish.dir/src/proc_control.c.o  -o tish 
+/usr/bin/cc -g   CMakeFiles/tish.dir/libs/linenoise.c.o CMakeFiles/tish.dir/src/tish.c.o CMakeFiles/tish.dir/src/io_scanning.c.o CMakeFiles/tish.dir/src/commands.c.o CMakeFiles/tish.dir/src/proc_control.c.o  -o tish 

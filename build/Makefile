@@ -145,6 +145,33 @@ tish/fast:
 	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/build
 .PHONY : tish/fast
 
+libs/linenoise.o: libs/linenoise.c.o
+
+.PHONY : libs/linenoise.o
+
+# target to build an object file
+libs/linenoise.c.o:
+	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/linenoise.c.o
+.PHONY : libs/linenoise.c.o
+
+libs/linenoise.i: libs/linenoise.c.i
+
+.PHONY : libs/linenoise.i
+
+# target to preprocess a source file
+libs/linenoise.c.i:
+	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/linenoise.c.i
+.PHONY : libs/linenoise.c.i
+
+libs/linenoise.s: libs/linenoise.c.s
+
+.PHONY : libs/linenoise.s
+
+# target to generate assembly for a file
+libs/linenoise.c.s:
+	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/linenoise.c.s
+.PHONY : libs/linenoise.c.s
+
 src/commands.o: src/commands.c.o
 
 .PHONY : src/commands.o
@@ -264,6 +291,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... package"
 	@echo "... tish"
+	@echo "... libs/linenoise.o"
+	@echo "... libs/linenoise.i"
+	@echo "... libs/linenoise.s"
 	@echo "... src/commands.o"
 	@echo "... src/commands.i"
 	@echo "... src/commands.s"

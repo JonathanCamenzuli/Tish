@@ -74,12 +74,12 @@ clean: CMakeFiles/tish.dir/clean
 CMakeFiles/tish.dir/all:
 	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/depend
 	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=1,2,3,4,5 "Built target tish"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=1,2,3,4,5,6 "Built target tish"
 .PHONY : CMakeFiles/tish.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tish.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" 5
+	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/tish.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" 0
 .PHONY : CMakeFiles/tish.dir/rule
