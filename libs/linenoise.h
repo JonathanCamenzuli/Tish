@@ -43,6 +43,8 @@
 extern "C" {
 #endif
 
+#include <stdio.h>
+
 typedef struct linenoiseCompletions {
   size_t len;
   char **cvec;

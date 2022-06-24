@@ -1,5 +1,5 @@
 /**
- * @file terminal_io.h
+ * @file io_scanning.h
  * @author Jonathan Camenzuli
  * @brief CPS1012 Assignment - Terminal Input and Output and Advanced Scanning (Tasks 3 & 4)
  * 
@@ -10,36 +10,51 @@
 #ifndef __IO_SCANNING_H
 #define __IO_SCANNING_H
 
+#include <stdbool.h>
 
 #define SPACE_CHAR          ' '
 #define QMARK_CHAR          '\"'
 #define BSLASH_CHAR         '\\'
-#define VBAR_CHAR           '|'
+//#define VBAR_CHAR           '|'
 #define GT_CHAR             '>'
-#define AOUTREDIR_CHAR      '>>'
+//#define AOUT_REDIR_CHAR     '>>'
 #define LT_CHAR             '<'
 #define SCOLON_CHAR         ';'
 #define NULL_CHAR           '\0'
 
-/**
- * @brief Special characters which are considered to be invalid
- *        characters if used improperly in tish
- * 
- */
-const char specialTishChars[] = {'~', '`', '#', '$', '&', '*',
-                                 '(', ')', '[', ']', '{', '}',
-                                 ':', '=', '?', '/', '!', '@',
-                                 '\'', QMARK_CHAR, BSLASH_CHAR,
-                                 VBAR_CHAR, GT_CHAR, LT_CHAR,
-                                 SCOLON_CHAR};
+#define GREEN_ANSI          "\e[0;32m"
+#define BLUE_ANSI           "\e[0;34m"	
+#define RESET_ANSI          "\e[0m"
+
+#define MAX_CWD_PATH        2048
+
 
 /**
- * @brief Tokenises the input made by the user
+ * @brief Special characters which are considered to be invalid
+ *        characters for files
  * 
- * @param inputBuffer   Input made by the user
- * @return char*        Arguments present in input
  */
-char* tokenizer(char* inputBuffer);
+extern const char specialTishChars[];
+
+typedef struct
+{
+    char* string;
+    int size;
+}string_t;
+
+typedef struct
+{
+    char** arguments;
+    int size;
+}args_t;
+
+
+string_t* initStr();
+
+
+args_t* initArgs();
+
+args_t* tokenizer(char* inputBuffer);
 
 /**
  * @brief Tokenises the pipeline
@@ -55,5 +70,24 @@ char*** pipelineTokenizer(char** args);
  * @param pipeline Pipeline to free memory from
  */
 void freePipeline(char*** pipeline);
+
+bool isRedirFileValid(char** fileName);
+
+/**
+ * @brief Get the file redirection type
+ * 
+ * @param token 
+ * @return int      1 - Output Redirection (>);
+ *                  2 - Append Output Redirection (>>);
+ *                  3 - Input Redirection (<);
+ *                  0 - Invalid character
+ */
+int getRedirType(char* token);
+
+void createPipeline(char* inputBuffer);
+
+void processTishInput(char* input);
+
+int refreshTishPrompt(char* tishPrompt, char* user, char* cwd);
 
 #endif

@@ -3,11 +3,17 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdio.h>
+#include <string.h>
 #include <sys/wait.h>
 
-void exit_tish(char **args)
+int exit_tish(char **args)
 {
-    exit(EXIT_SUCCESS);
+    for (char** ch = args; *ch != NULL; ch++)
+        free(*ch);
+    free(args);
+
+    return 2;
 }
 
 int cd_tish(char **args)
@@ -46,6 +52,8 @@ int ver_tish(char **args)
     //To be implemented more in detail
     printf("tinyshell v1.0");
     printf("jonathan camenzuli (c) 2022");
+
+    return EXIT_SUCCESS;
 }
 
 tishCommand_t execTishCommands[TISH_COMMANDS_NO] =
@@ -56,21 +64,14 @@ tishCommand_t execTishCommands[TISH_COMMANDS_NO] =
     {"ver", &ver_tish}
 };
 
-int execTishCommand(char* name, char **args)
+int execTishCommand(char **args)
 {
     bool doesCommandExist = false;
     for (int i = 0; i < TISH_COMMANDS_NO; i++)
     {
-        if (strncmp(execTishCommands[i].name, name) == 0)
-        {
-            doesCommandExist = true;
-            execTishCommands[i].func(args);
-            return EXIT_SUCCESS;
-        }
+        if (strcmp(execTishCommands[i].name, args[0]) == 0)
+            return execTishCommands[i].func(args);
     }
-
-    if (doesCommandExist == false)
-        return EXIT_FAILURE;
     
-    return EXIT_SUCCESS;
+    return EXIT_FAILURE;
 }

@@ -32,8 +32,10 @@ typedef struct
  * @brief Terminates the shell
  * 
  * @param args Arguments: Ignored
+ * @return int Special code indicating shell being terminated (2)
  */
-void exit_tish(char **args);
+int exit_tish(char **args);
+
 
 /**
  * @brief Changes the current working directory
@@ -59,10 +61,9 @@ int ver_tish(char **args);
 /**
  * @brief Launches a built-in command
  * 
- * @param name Command entered in CLI
  * @param args Argument/s
- * @return int 0 if successfuly, 1 if failed
+ * @return int 0 if successful, 1 if failed
  */
-int execTishCommand(char* name, char **args);
+int execTishCommand(char **args);
 
 #endif
