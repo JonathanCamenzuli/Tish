@@ -16,7 +16,7 @@ int exit_tish(char **args)
     return 2;
 }
 
-int cd_tish(char **args)
+int cd_tish(char** args)
 {
     if (*args)
     {
@@ -31,7 +31,7 @@ int cd_tish(char **args)
     return EXIT_SUCCESS;
 }
 
-int cwd_tish(char **args)
+int cwd_tish(char** args)
 {
     char cwdStr[100];
 
@@ -47,7 +47,7 @@ int cwd_tish(char **args)
 
 }
 
-int ver_tish(char **args)
+int ver_tish(char** args)
 {
     //To be implemented more in detail
     printf("tinyshell v1.0");
@@ -64,7 +64,7 @@ tishCommand_t execTishCommands[TISH_COMMANDS_NO] =
     {"ver", &ver_tish}
 };
 
-int execTishCommand(char **args)
+int execTishCommand(char** args)
 {
     bool doesCommandExist = false;
     for (int i = 0; i < TISH_COMMANDS_NO; i++)

@@ -27,7 +27,8 @@ args_t* initArgs()
 {
     args_t* args;
     args = (args_t*)malloc(sizeof(args_t));
-    args->arguments[0] = NULL_CHAR;
+    args->arguments = (char**)malloc(sizeof(char*));
+    args->arguments[0] = NULL;
     args->size = 1;
     return args;
 }
@@ -112,9 +113,9 @@ char*** pipelineTokenizer(char** args)
 
     char*** command = (char***)calloc(pipeSize+1, sizeof(char**));
 
-    for (char** ch_i = args; *ch_i != NULL; ch_i++)
+    for (char** ch_i = args; *ch_i != NULL; ++ch_i)
     {
-        if (strcmp(*ch_i, "|"))
+        if (strcmp(*ch_i, "|") == 0)
         {
             command = (char***)realloc(command, (++pipeSize+1)*sizeof(char**));
             command[pipeSize-1] = NULL;
@@ -122,7 +123,7 @@ char*** pipelineTokenizer(char** args)
         }
         else
         {
-            command = (char***)realloc(command, (++pipeSize+1)*sizeof(char**));
+            command[pipeSize-1] = (char**)realloc(command[pipeSize-1], (++argSize+1)*sizeof(char*));
             command[pipeSize-1][pipeSize-2] = *ch_i;
             command[pipeSize-1][pipeSize-1] = NULL;
         }
@@ -134,7 +135,7 @@ char*** pipelineTokenizer(char** args)
 
 void freePipeline(char*** pipeline)
 {
-    for (char*** ch_i = pipeline; *ch_i != NULL; ch_i++)
+    for (char*** ch_i = pipeline; *ch_i != NULL; ++ch_i)
         free(*ch_i);
     free(pipeline);
 }
@@ -144,14 +145,14 @@ bool isRedirFileValid(char** fileName)
     bool redirect = false;
     bool isFilenameValid = false;
 
-    for (char** ch_i = fileName; *ch_i != NULL; ch_i++)
+    for (char** ch_i = fileName; *ch_i != NULL; ++ch_i)
     {
-        if (strchr(*ch_i, '<') != NULL || strcmp(*ch_i, ">>") == 0 || strchr(*ch_i, '<') != NULL)
+        if (strcmp(ch_i, "<") == 0 || strcmp(ch_i, ">>") == 0 || strcmp(ch_i, "<") == 0)
             redirect = true;
 
         for (int i = 0; i < (sizeof(specialTishChars)/sizeof(char)); i++)
         {
-            if (strchr(*(ch_i+1), specialTishChars[i]) != NULL)
+            if (strchr(ch_i+1, specialTishChars[i]) != NULL)
                 isFilenameValid = true;
         }
         
@@ -159,16 +160,15 @@ bool isRedirFileValid(char** fileName)
             return false;
     }
     return true;
-
 }
 
 int getRedirType(char* token)
 {
-    if (strchr(token, '>') != NULL)
+    if (strcmp(token, ">") == 0)
         return 1;
     else if (strcmp(token, ">>") == 0)
         return 2;
-    else if (strchr(token, '<') != NULL)
+    else if (strcmp(token, "<") == 0)
         return 3;
     else
         return 0;
@@ -186,7 +186,7 @@ void createPipeline(char* inputBuffer)
     char* fileIn;
     bool appendOut;
 
-    for (char** ch_i = tokens; *ch_i != NULL; ch_i++)
+    for (char** ch_i = tokens; *ch_i != NULL; ++ch_i)
         token_i++;
 
     if (strcmp(tokens[0], ">") == 0
@@ -214,13 +214,13 @@ void createPipeline(char* inputBuffer)
             fileOut = NULL;
             appendOut = false;
 
-            for (char** ch_i = tokens; *ch_i != NULL; ch_i++)
+            for (char** ch_i = tokens; *ch_i != NULL; ++ch_i)
             {
                 int redirType = getRedirType(*ch_i);
                 if (redirType == 1)
                 {
                     fileOut = strdup(*(ch_i+1));
-                    for (char** newArgs = ch_i; *newArgs != NULL; newArgs++)
+                    for (char** newArgs = ch_i; *newArgs; ++newArgs)
                         *newArgs = *(newArgs+2);
                     args->size -= 2;
                     ch_i -= 2;
@@ -230,7 +230,7 @@ void createPipeline(char* inputBuffer)
                 else if (redirType == 3)
                 {
                     fileIn = strdup(*(ch_i+1));
-                    for (char** newArgs = ch_i; *newArgs; newArgs++)
+                    for (char** newArgs = ch_i; *newArgs != NULL; ++newArgs)
                         *newArgs = *(newArgs+2);
                     args->size -= 2;
                     ch_i -= 2;
@@ -251,14 +251,14 @@ void createPipeline(char* inputBuffer)
 void processTishInput(char* input)
 {
     char* inputBuffer = input;
-    for (char* ch_i = input; *ch_i; ch_i++)
+    for (char* ch_i = input; *ch_i; ++ch_i)
         if (*ch_i == BSLASH_CHAR && *(ch_i+1) == SCOLON_CHAR)
             ch_i++;
         else if (*ch_i == SCOLON_CHAR)
         {
             *ch_i = NULL_CHAR;
             createPipeline(inputBuffer);
-            inputBuffer = ch_i++;
+            inputBuffer = ++ch_i;
         }
         else if (*(ch_i+1) == NULL_CHAR)
             createPipeline(inputBuffer);
