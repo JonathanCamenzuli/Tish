@@ -50,7 +50,7 @@ int cwd_tish(char** args)
 int ver_tish(char** args)
 {
     //To be implemented more in detail
-    printf("tinyshell v1.0");
+    printf("\ntinyshell v1.0");
     printf("jonathan camenzuli (c) 2022");
 
     return EXIT_SUCCESS;
@@ -66,12 +66,16 @@ tishCommand_t execTishCommands[TISH_COMMANDS_NO] =
 
 int execTishCommand(char** args)
 {
-    bool doesCommandExist = false;
+    bool doesTishCommandExist = false;
     for (int i = 0; i < TISH_COMMANDS_NO; i++)
     {
         if (strcmp(execTishCommands[i].name, args[0]) == 0)
-            return execTishCommands[i].func(args);
+        {
+            doesTishCommandExist = true;
+            execTishCommands[i].func(args);
+            return EXIT_SUCCESS;
+        }
     }
-    
+
     return EXIT_FAILURE;
 }

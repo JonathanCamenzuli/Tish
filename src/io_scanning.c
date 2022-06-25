@@ -264,14 +264,14 @@ void processTishInput(char* input)
             createPipeline(inputBuffer);
 }
 
-int refreshTishPrompt(char* tishPrompt, char* user, char* cwd)
+int refreshTishPrompt(char* tishPrompt, char* cwd)
 {
     tishPrompt[0] = NULL_CHAR;
 
     if (getcwd(cwd, MAX_CWD_PATH))
     {
         strcat(tishPrompt, GREEN_ANSI);
-        strcat(tishPrompt, user);
+        strcat(tishPrompt, getenv("USER"));
         strcat(tishPrompt, "@tish");
         strcat(tishPrompt, RESET_ANSI);
         strcat(tishPrompt, BLUE_ANSI);

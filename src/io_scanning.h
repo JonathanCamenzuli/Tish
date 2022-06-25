@@ -88,6 +88,6 @@ void createPipeline(char* inputBuffer);
 
 void processTishInput(char* input);
 
-int refreshTishPrompt(char* tishPrompt, char* user, char* cwd);
+int refreshTishPrompt(char* tishPrompt, char* cwd);
 
 #endif

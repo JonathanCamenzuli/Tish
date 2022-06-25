@@ -11,18 +11,17 @@
 int main(void)
 {
     char cwd[MAX_CWD_PATH];
-    char user[MAX_UNAME_LEN];
     char tishPrompt[MAX_TISH_PROMPT_LEN];
     char* tishLine;
 
-    refreshTishPrompt(tishPrompt, user, cwd);
+    refreshTishPrompt(tishPrompt, cwd);
 
     while ((tishLine = linenoise(tishPrompt)) != NULL)
     {
         if (tishLine[0] != NULL_CHAR)
         {
             processTishInput(tishLine);
-            refreshTishPrompt(tishPrompt, user, cwd);
+            refreshTishPrompt(tishPrompt, cwd);
         }
         free(tishLine);
     }
