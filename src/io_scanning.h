@@ -51,8 +51,11 @@ typedef struct
 
 string_t* initStr();
 
-
 args_t* initArgs();
+
+void addToArgs(args_t* args, string_t* str);
+
+void addToStr(string_t* str, char ch);
 
 args_t* tokenizer(char* inputBuffer);
 

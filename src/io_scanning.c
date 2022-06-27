@@ -33,6 +33,25 @@ args_t* initArgs()
     return args;
 }
 
+void addToArgs(args_t* args, string_t* str)
+{
+    if (str->size > 1)
+    {
+        args->arguments = (char**)realloc(args->arguments, sizeof(char*)*(args->size+1));
+        args->arguments[args->size-1] = strdup(str->string);
+        args->arguments[args->size++] = NULL;
+        str->size = 1;
+    }
+}
+
+void addToStr(string_t* str, char ch)
+{
+    str->string = (char*)realloc(str->string, sizeof(char)*(str->size+1));
+    str->string[str->size-1] = ch;
+    str->string[str->size] = '\0';
+    str->size++;
+}
+
 args_t* tokenizer(char* inputBuffer)
 {
     string_t* str = initStr();
@@ -44,13 +63,7 @@ args_t* tokenizer(char* inputBuffer)
         {
         case SPACE_CHAR:
             //append to args(args, str)
-            if (str->size > 1)
-            {
-                args->arguments = (char**)realloc(args->arguments, sizeof(char*)*(args->size+1));
-                args->arguments[args->size-1] = strdup(str->string);
-                args->arguments[args->size++] = NULL;
-                str->size = 1;
-            }
+            addToArgs(args, str);
             break;
         case QMARK_CHAR:
             while (*++ch_i != QMARK_CHAR)
@@ -58,18 +71,12 @@ args_t* tokenizer(char* inputBuffer)
                 if (*ch_i == BSLASH_CHAR && (*(ch_i+1) == QMARK_CHAR || *(ch_i+1) == BSLASH_CHAR || *(ch_i+1) == SCOLON_CHAR))
                 {
                     //append to string(str, *++ch_i)
-                    str->string = (char*)realloc(str->string, sizeof(char)*(str->size+1));
-                    str->string[str->size-1] = *++ch_i;
-                    str->string[str->size] = '\0';
-                    str->size++;
+                    addToStr(str, *++ch_i);
                 }
                 else
                 {
                     //append to string(str, *ch_i)
-                    str->string = (char*)realloc(str->string, sizeof(char)*(str->size+1));
-                    str->string[str->size-1] = *ch_i;
-                    str->string[str->size] = '\0';
-                    str->size++;
+                    addToStr(str, *ch_i);
                 }
             }
             break;
@@ -77,30 +84,17 @@ args_t* tokenizer(char* inputBuffer)
             if (*(ch_i+1) == QMARK_CHAR || *(ch_i+1) == BSLASH_CHAR)
             {
                 //append to string(str, *++ch_i)
-                str->string = (char*)realloc(str->string, sizeof(char)*(str->size+1));
-                str->string[str->size-1] = *++ch_i;
-                str->string[str->size] = '\0';
-                str->size++;
+                addToStr(str, *++ch_i);
             }
             break;
         default:
             //append to string(str, *ch_i)
-            str->string = (char*)realloc(str->string, sizeof(char)*(str->size+1));
-            str->string[str->size-1] = *ch_i;
-            str->string[str->size] = '\0';
-            str->size++;
+            addToStr(str, *ch_i);
             break;
         }
     }
 
-    if (str->size > 1)
-    {
-        args->arguments = (char**)realloc(args->arguments, sizeof(char*)*(args->size+1));
-        args->arguments[args->size-1] = strdup(str->string);
-        args->arguments[args->size++] = NULL;
-        str->size = 1;
-    }
-    
+    addToArgs(args, str);
     free(str->string);
     free(str);
     return args;
@@ -147,12 +141,12 @@ bool isRedirFileValid(char** fileName)
 
     for (char** ch_i = fileName; *ch_i != NULL; ++ch_i)
     {
-        if (strcmp(ch_i, "<") == 0 || strcmp(ch_i, ">>") == 0 || strcmp(ch_i, "<") == 0)
+        if (strcmp(*ch_i, "<") == 0 || strcmp(*ch_i, ">>") == 0 || strcmp(*ch_i, "<") == 0)
             redirect = true;
 
-        for (int i = 0; i < (sizeof(specialTishChars)/sizeof(char)); i++)
+        for (int i = 0; i < sizeof(specialTishChars)/sizeof(char); i++)
         {
-            if (strchr(ch_i+1, specialTishChars[i]) != NULL)
+            if (strchr(*ch_i+1, specialTishChars[i]) != NULL)
                 isFilenameValid = true;
         }
         
@@ -245,6 +239,10 @@ void createPipeline(char* inputBuffer)
     }
     else
         fprintf(stderr, "-tish: syntax error: invalid filename\n");
+    
+    for (int i = 0; i < args->size; i++)
+        free(args->arguments[i]);
+    free(args->arguments);
     free(args);
 }
 
@@ -252,6 +250,7 @@ void processTishInput(char* input)
 {
     char* inputBuffer = input;
     for (char* ch_i = input; *ch_i; ++ch_i)
+    {
         if (*ch_i == BSLASH_CHAR && *(ch_i+1) == SCOLON_CHAR)
             ch_i++;
         else if (*ch_i == SCOLON_CHAR)
@@ -262,6 +261,7 @@ void processTishInput(char* input)
         }
         else if (*(ch_i+1) == NULL_CHAR)
             createPipeline(inputBuffer);
+    }
 }
 
 int refreshTishPrompt(char* tishPrompt, char* cwd)
