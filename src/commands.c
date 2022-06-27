@@ -7,7 +7,7 @@
 #include <string.h>
 #include <sys/wait.h>
 
-int exit_tish(char **args)
+int exit_tish(char** args)
 {
     for (char** ch = args; *ch != NULL; ch++)
         free(*ch);

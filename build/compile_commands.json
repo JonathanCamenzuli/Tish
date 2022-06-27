@@ -1,27 +1,27 @@
 [
 {
   "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
-  "command": "/usr/bin/cc   -g   -o CMakeFiles/tish.dir/libs/linenoise.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/linenoise.c\"",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/libs/linenoise.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/linenoise.c\"",
   "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/linenoise.c"
 },
 {
   "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
-  "command": "/usr/bin/cc   -g   -o CMakeFiles/tish.dir/src/tish.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/tish.c\"",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/src/tish.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/tish.c\"",
   "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/tish.c"
 },
 {
   "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
-  "command": "/usr/bin/cc   -g   -o CMakeFiles/tish.dir/src/io_scanning.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.c\"",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/src/io_scanning.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.c\"",
   "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.c"
 },
 {
   "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
-  "command": "/usr/bin/cc   -g   -o CMakeFiles/tish.dir/src/commands.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c\"",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/src/commands.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c\"",
   "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c"
 },
 {
   "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
-  "command": "/usr/bin/cc   -g   -o CMakeFiles/tish.dir/src/proc_control.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.c\"",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/src/proc_control.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.c\"",
   "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.c"
 }
 ]

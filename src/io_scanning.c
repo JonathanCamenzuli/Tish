@@ -105,21 +105,21 @@ char*** pipelineTokenizer(char** args)
     int pipeSize = 1;
     int argSize = 1;
 
-    char*** command = (char***)calloc(pipeSize+1, sizeof(char**));
+    char*** command = calloc(pipeSize+1, sizeof(char**));
 
     for (char** ch_i = args; *ch_i != NULL; ++ch_i)
     {
         if (strcmp(*ch_i, "|") == 0)
         {
-            command = (char***)realloc(command, (++pipeSize+1)*sizeof(char**));
+            command = realloc(command, (++pipeSize + 1)*sizeof(char **));
             command[pipeSize-1] = NULL;
             argSize = 1;
         }
         else
         {
-            command[pipeSize-1] = (char**)realloc(command[pipeSize-1], (++argSize+1)*sizeof(char*));
-            command[pipeSize-1][pipeSize-2] = *ch_i;
-            command[pipeSize-1][pipeSize-1] = NULL;
+            command[pipeSize-1] = realloc(command[pipeSize-1], (++argSize)*sizeof(char *));
+            command[pipeSize-1][argSize-2] = *ch_i;
+            command[pipeSize-1][argSize-1] = NULL;
         }
     }
 
@@ -174,11 +174,6 @@ void createPipeline(char* inputBuffer)
     char** tokens = args->arguments;
 
     int token_i = 0;
-    int tishExitCode = 0;
-
-    char* fileOut;
-    char* fileIn;
-    bool appendOut;
 
     for (char** ch_i = tokens; *ch_i != NULL; ++ch_i)
         token_i++;
@@ -195,7 +190,7 @@ void createPipeline(char* inputBuffer)
         fprintf(stderr, "-tish: syntax error near unexpected token \'%s\'\n", tokens[token_i-1]);
     else if (isRedirFileValid(tokens))
     {
-        tishExitCode = execTishCommand(tokens);
+        int tishExitCode = execTishCommand(tokens);
         if (tishExitCode == 2)
         {
             free(inputBuffer);
@@ -204,9 +199,9 @@ void createPipeline(char* inputBuffer)
         }
         else if (tishExitCode == 1)
         {
-            fileIn = NULL;
-            fileOut = NULL;
-            appendOut = false;
+            char* fileOut = NULL;
+            char* fileIn = NULL;
+            bool appendOut = false;
 
             for (char** ch_i = tokens; *ch_i != NULL; ++ch_i)
             {

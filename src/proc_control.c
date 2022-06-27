@@ -7,11 +7,11 @@
 #include <ctype.h>
 #include <sys/wait.h>
 
-int forkExecPipe(char ***pipelineArgs, char *fileIn, char *fileOut, bool appendOut, bool asyncEnable)
+int forkExecPipe(char ***pipelineArgs, char* fileIn, char* fileOut, bool appendOut, bool asyncEnable)
 {
     int childCount = 0;
 
-    char ***arg = pipelineArgs;
+    char*** arg = pipelineArgs;
     while (*arg != NULL)
     {
         childCount++;
@@ -46,7 +46,7 @@ int forkExecPipe(char ***pipelineArgs, char *fileIn, char *fileOut, bool appendO
                 return EXIT_FAILURE;
             }
 
-            if (stage > pipeCount)
+            if (stage < pipeCount)
             {
                 if (close(currFd[0]) == -1)
                 {
@@ -119,15 +119,22 @@ int forkExecPipe(char ***pipelineArgs, char *fileIn, char *fileOut, bool appendO
         }
 
         int status;
-        if (asyncEnable && (waitpid(childPID, &status, WNOHANG) == -1))
+
+        if (!asyncEnable)
         {
-            perror("-tish: waitpid failed");
-            return EXIT_FAILURE;
+            if (waitpid(childPID, &status, WUNTRACED) == -1)
+            {
+                perror("-tish: waitpid failed");
+                return EXIT_FAILURE;
+            }
         }
-        else if (waitpid(childPID, &status, WUNTRACED) == -1)
+        else
         {
-            perror("-tish: waitpid failed");
-            return EXIT_FAILURE;
+            if (waitpid(childPID, &status, WNOHANG) == -1)
+            {
+                perror("-tish: waitpid failed");
+                return EXIT_FAILURE;
+            }
         }
 
         if (!WIFEXITED(status))
