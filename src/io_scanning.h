@@ -23,7 +23,8 @@
 #define NULL_CHAR           '\0'
 
 #define GREEN_ANSI          "\e[0;32m"
-#define BLUE_ANSI           "\e[0;34m"	
+#define BLUE_ANSI           "\e[0;34m"
+#define RED_ANSI            "\e[0;31m"			
 #define RESET_ANSI          "\e[0m"
 
 #define MAX_CWD_PATH        2048
@@ -74,7 +75,7 @@ char*** pipelineTokenizer(char** args);
  */
 void freePipeline(char*** pipeline);
 
-bool isRedirFileValid(char** fileName);
+bool isRedirValid(char** fileName);
 
 /**
  * @brief Get the file redirection type

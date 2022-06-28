@@ -134,14 +134,14 @@ void freePipeline(char*** pipeline)
     free(pipeline);
 }
 
-bool isRedirFileValid(char** fileName)
+bool isRedirValid(char** fileName)
 {
     bool redirect = false;
     bool isFilenameValid = false;
 
     for (char** ch_i = fileName; *ch_i != NULL; ++ch_i)
     {
-        if (strcmp(*ch_i, "<") == 0 || strcmp(*ch_i, ">>") == 0 || strcmp(*ch_i, "<") == 0)
+        if (strcmp(*ch_i, ">") == 0 || strcmp(*ch_i, ">>") == 0 || strcmp(*ch_i, "<") == 0)
             redirect = true;
 
         for (int i = 0; i < sizeof(specialTishChars)/sizeof(char); i++)
@@ -188,7 +188,7 @@ void createPipeline(char* inputBuffer)
                 || strcmp(tokens[token_i-1], "<") == 0
                 || strcmp(tokens[token_i-1], "|") == 0)
         fprintf(stderr, "-tish: syntax error near unexpected token \'%s\'\n", tokens[token_i-1]);
-    else if (isRedirFileValid(tokens))
+    else if (isRedirValid(tokens))
     {
         int tishExitCode = execTishCommand(tokens);
         if (tishExitCode == 2)
@@ -269,11 +269,12 @@ int refreshTishPrompt(char* tishPrompt, char* cwd)
         strcat(tishPrompt, getenv("USER"));
         strcat(tishPrompt, "@tish");
         strcat(tishPrompt, RESET_ANSI);
-        strcat(tishPrompt, BLUE_ANSI);
         strcat(tishPrompt, ":");
+        strcat(tishPrompt, BLUE_ANSI);
         strcat(tishPrompt, cwd);
+        strcat(tishPrompt, RED_ANSI);
+        strcat(tishPrompt, " $ ");
         strcat(tishPrompt, RESET_ANSI);
-        strcat(tishPrompt, "$ ");
         return EXIT_SUCCESS;
     }
     else

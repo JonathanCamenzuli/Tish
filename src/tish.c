@@ -6,7 +6,6 @@
 
 
 #define MAX_TISH_PROMPT_LEN     4096
-#define MAX_UNAME_LEN           16
 
 int main(void)
 {
