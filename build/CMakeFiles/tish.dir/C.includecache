@@ -6,28 +6,22 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
-
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.c
-io_scanning.h
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.h
-commands.h
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.c
 proc_control.h
 /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.h
-stdbool.h
--
 stdlib.h
+-
+stdbool.h
 -
 stdio.h
 -
-string.h
--
 unistd.h
 -
-
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.h
-stdbool.h
+fcntl.h
+-
+ctype.h
+-
+sys/wait.h
 -
 
 /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.h

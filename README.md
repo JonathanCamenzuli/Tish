@@ -11,11 +11,11 @@
 
 # To-do List
 - [ ] Implementing `tfetch`
-- [ ] Testing: Command Pipelines
+- [x] Testing: Command Pipelines
 - [ ] Testing: Advanced Scanning
 - [ ] Testing: Error Handling
 - [ ] Testing: Built-in Commands
 
 # Known Issues
 ## Command Pipelines
-- Input Redirection (`<`) does not work
+- Multiple redirection tokens not working

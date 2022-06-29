@@ -24,7 +24,7 @@ int reopen(int fd, char* pathName, int flags, mode_t mode)
 
 int redirectInput(char* input)
 {
-    return(reopen(STDERR_FILENO, input, O_RDONLY, S_IRUSR));
+    return(reopen(STDIN_FILENO, input, O_RDONLY, S_IRUSR));
 }
 
 int redirectOutput(char* output, int appendFlag)
