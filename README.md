@@ -12,7 +12,7 @@
 # To-do List
 - [ ] Implementing `tfetch`
 - [x] Testing: Command Pipelines
-- [ ] Testing: Advanced Scanning
+- [x] Testing: Advanced Scanning
 - [ ] Testing: Error Handling
 - [ ] Testing: Built-in Commands
 
