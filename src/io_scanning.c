@@ -62,33 +62,22 @@ args_t* tokenizer(char* inputBuffer)
         switch (*ch_i)
         {
         case SPACE_CHAR:
-            //append to args(args, str)
             addToArgs(args, str);
             break;
         case QMARK_CHAR:
             while (*++ch_i != QMARK_CHAR)
             {
                 if (*ch_i == BSLASH_CHAR && (*(ch_i+1) == QMARK_CHAR || *(ch_i+1) == BSLASH_CHAR || *(ch_i+1) == SCOLON_CHAR))
-                {
-                    //append to string(str, *++ch_i)
                     addToStr(str, *++ch_i);
-                }
                 else
-                {
-                    //append to string(str, *ch_i)
                     addToStr(str, *ch_i);
-                }
             }
             break;
         case BSLASH_CHAR:
             if (*(ch_i+1) == QMARK_CHAR || *(ch_i+1) == BSLASH_CHAR)
-            {
-                //append to string(str, *++ch_i)
                 addToStr(str, *++ch_i);
-            }
             break;
         default:
-            //append to string(str, *ch_i)
             addToStr(str, *ch_i);
             break;
         }
