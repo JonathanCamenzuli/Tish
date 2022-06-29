@@ -59,12 +59,10 @@ args_t* tokenizer(char* inputBuffer)
 
     for (char *ch_i = inputBuffer; *ch_i != '\0'; ch_i++)
     {
-        switch (*ch_i)
-        {
-        case SPACE_CHAR:
+        if (*ch_i == SPACE_CHAR)
             addToArgs(args, str);
-            break;
-        case '\"':
+        else if (*ch_i == '\"')
+        {
             while (*++ch_i != '\"')
             {
                 if (*ch_i == '\\' && (*(ch_i+1) == '\"' || *(ch_i+1) == '\\' || *(ch_i+1) == ';'))
@@ -72,15 +70,14 @@ args_t* tokenizer(char* inputBuffer)
                 else
                     addToStr(str, *ch_i);
             }
-            break;
-        case '\\':
+        }
+        else if (*ch_i == '\\')
+        {
             if (*(ch_i+1) == '\"' || *(ch_i+1) == '\\')
                 addToStr(str, *++ch_i);
-            break;
-        default:
-            addToStr(str, *ch_i);
-            break;
         }
+        else
+            addToStr(str, *ch_i);
     }
 
     addToArgs(args, str);
@@ -89,14 +86,14 @@ args_t* tokenizer(char* inputBuffer)
     return args;
 }
 
-char*** pipelineTokenizer(char** args)
+char*** pipelineTokenizer(char** inputBuffer)
 {
     int pipeSize = 1;
     int argSize = 1;
 
     char*** command = calloc(pipeSize+1, sizeof(char**));
 
-    for (char** ch_i = args; *ch_i != NULL; ++ch_i)
+    for (char** ch_i = inputBuffer; *ch_i != NULL; ++ch_i)
     {
         if (strcmp(*ch_i, "|") == 0)
         {
@@ -123,12 +120,12 @@ void freePipeline(char*** pipeline)
     free(pipeline);
 }
 
-bool isRedirValid(char** fileName)
+bool isRedirValid(char** inputBuffer)
 {
     bool redirect = false;
     bool isFilenameValid = false;
 
-    for (char** ch_i = fileName; *ch_i != NULL; ++ch_i)
+    for (char** ch_i = inputBuffer; *ch_i != NULL; ++ch_i)
     {
         if (strcmp(*ch_i, ">") == 0 || strcmp(*ch_i, ">>") == 0 || strcmp(*ch_i, "<") == 0)
             redirect = true;
@@ -140,9 +137,9 @@ bool isRedirValid(char** fileName)
         }
         
         if (redirect && isFilenameValid)
-            return false;
+            return true;
     }
-    return true;
+    return false;
 }
 
 int getRedirType(char* token)
@@ -177,7 +174,7 @@ void createPipeline(char* inputBuffer)
                 || strcmp(tokens[token_i-1], "<") == 0
                 || strcmp(tokens[token_i-1], "|") == 0)
         fprintf(stderr, "-tish: syntax error near unexpected token \'%s\'\n", tokens[token_i-1]);
-    else if (isRedirValid(tokens))
+    else if (!isRedirValid(tokens))
     {
         int tishExitCode = execTishCommand(tokens);
         if (tishExitCode == 2)
@@ -230,21 +227,21 @@ void createPipeline(char* inputBuffer)
     free(args);
 }
 
-void processTishInput(char* input)
+void processTishInput(char* inputBuffer)
 {
-    char* inputBuffer = input;
-    for (char* ch_i = input; *ch_i; ++ch_i)
+    char* inputBuf = inputBuffer;
+    for (char* ch_i = inputBuffer; *ch_i; ++ch_i)
     {
         if (*ch_i == '\\' && *(ch_i+1) == ';')
             ch_i++;
         else if (*ch_i == ';')
         {
             *ch_i = NULL_CHAR;
-            createPipeline(inputBuffer);
-            inputBuffer = ++ch_i;
+            createPipeline(inputBuf);
+            inputBuf = ++ch_i;
         }
         else if (*(ch_i+1) == NULL_CHAR)
-            createPipeline(inputBuffer);
+            createPipeline(inputBuf);
     }
 }
 

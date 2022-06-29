@@ -7,8 +7,8 @@
  * 
  */
 
-#ifndef COMMANDS_H
-#define COMMANDS_H
+#ifndef __COMMANDS_H
+#define __COMMANDS_H
 
 #define TISH_COMMANDS_NO 4
 
