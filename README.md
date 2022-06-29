@@ -18,6 +18,5 @@
 
 # Known Issues
 ## Command Pipelines
-- `echo Hello, World! > message.txt` returns with `-tish: syntax error: invalid filename` error
 - Pipes ( `|` ) do not work
 - Input Redirection (`<`) does not work
