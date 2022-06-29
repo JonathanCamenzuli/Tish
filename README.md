@@ -13,9 +13,9 @@
 - [ ] Implementing `tfetch`
 - [x] Testing: Command Pipelines
 - [x] Testing: Advanced Scanning
-- [ ] Testing: Error Handling
-- [ ] Testing: Built-in Commands
+- [x] Testing: Error Handling
+- [x] Testing: Built-in Commands
 
 # Known Issues
-## Command Pipelines
-- Multiple redirection tokens not working
+## Error Handling
+- Segmentation fault caused by unmatched quotes test
