@@ -64,17 +64,17 @@ args_t* tokenizer(char* inputBuffer)
         case SPACE_CHAR:
             addToArgs(args, str);
             break;
-        case QMARK_CHAR:
-            while (*++ch_i != QMARK_CHAR)
+        case '\"':
+            while (*++ch_i != '\"')
             {
-                if (*ch_i == BSLASH_CHAR && (*(ch_i+1) == QMARK_CHAR || *(ch_i+1) == BSLASH_CHAR || *(ch_i+1) == SCOLON_CHAR))
+                if (*ch_i == '\\' && (*(ch_i+1) == '\"' || *(ch_i+1) == '\\' || *(ch_i+1) == ';'))
                     addToStr(str, *++ch_i);
                 else
                     addToStr(str, *ch_i);
             }
             break;
-        case BSLASH_CHAR:
-            if (*(ch_i+1) == QMARK_CHAR || *(ch_i+1) == BSLASH_CHAR)
+        case '\\':
+            if (*(ch_i+1) == '\"' || *(ch_i+1) == '\\')
                 addToStr(str, *++ch_i);
             break;
         default:
@@ -235,9 +235,9 @@ void processTishInput(char* input)
     char* inputBuffer = input;
     for (char* ch_i = input; *ch_i; ++ch_i)
     {
-        if (*ch_i == BSLASH_CHAR && *(ch_i+1) == SCOLON_CHAR)
+        if (*ch_i == '\\' && *(ch_i+1) == ';')
             ch_i++;
-        else if (*ch_i == SCOLON_CHAR)
+        else if (*ch_i == ';')
         {
             *ch_i = NULL_CHAR;
             createPipeline(inputBuffer);
