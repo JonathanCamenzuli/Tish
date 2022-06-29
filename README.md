@@ -18,5 +18,4 @@
 
 # Known Issues
 ## Command Pipelines
-- Pipes ( `|` ) do not work
 - Input Redirection (`<`) does not work
