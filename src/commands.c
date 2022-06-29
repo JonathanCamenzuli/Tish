@@ -50,8 +50,8 @@ int cwd_tish(char** args)
 int ver_tish(char** args)
 {
     //To be implemented more in detail
-    printf("\n\ntinyshell v1.0");
-    printf("\njonathan camenzuli (c) 2022");
+    puts("tinyshell v1.0");
+    puts("jonathan camenzuli (c) 2022");
 
     return EXIT_SUCCESS;
 }
