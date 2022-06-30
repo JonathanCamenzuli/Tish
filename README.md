@@ -10,7 +10,7 @@
 ```
 
 # To-do List
-- [ ] Implementing `tfetch`
+- [x] Implementing `tfetch`
 - [x] Testing: Command Pipelines
 - [x] Testing: Advanced Scanning
 - [x] Testing: Error Handling

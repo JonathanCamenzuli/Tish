@@ -15,10 +15,6 @@
 #define SPACE_CHAR          ' '
 #define QMARK_CHAR          '\"'
 #define BSLASH_CHAR         '\\'
-//#define VBAR_CHAR           '|'
-#define GT_CHAR             '>'
-//#define AOUT_REDIR_CHAR     '>>'
-#define LT_CHAR             '<'
 #define SCOLON_CHAR         ';'
 #define NULL_CHAR           '\0'
 
@@ -76,7 +72,7 @@ args_t* initArgs();
  * @param args  an instance of args_t
  * @param str   an instance of string_t
  */
-void addToArgs(args_t* args, string_t* str);
+void argsCat(args_t* args, string_t* str);
 
 /**
  * @brief This function serves as an adder function for string_t that appends
@@ -86,7 +82,7 @@ void addToArgs(args_t* args, string_t* str);
  * @param str   the instance of string_t
  * @param ch    a character to be appended to strings
  */
-void addToStr(string_t* str, char ch);
+void strCat(string_t* str, char ch);
 
 /**
  * @brief Tokenises the input made by the user into strings (string_t) and

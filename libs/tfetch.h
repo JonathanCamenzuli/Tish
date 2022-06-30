@@ -10,15 +10,7 @@
 #ifndef __TFETCH_H
 #define __TFETCH_H
 
-#define RED_ANSI            "\e[0;31m"
 #define GREEN_ANSI          "\e[0;32m"
-#define YELLOW_ANSI         "\e[0;33m"
-#define BLUE_ANSI           "\e[0;34m"
-#define PURPLE_ANSI         "\e[0;35m"
-
-
-
-
 #define RESET_ANSI          "\e[0m"
 
 #define LOGO_ROWS           9

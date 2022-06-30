@@ -9,6 +9,8 @@
 
 int reopen(int fd, char* pathName, int flags, mode_t mode)
 {
+    // Big thanks to Dr. Keith Bugeja for kindly providing
+    // this method: https://www.youtube.com/watch?v=XflfgbUiHYI
     int openFd = open(pathName, flags, mode);
     if ((openFd == fd) || (openFd < 0))
         return openFd;
@@ -24,11 +26,15 @@ int reopen(int fd, char* pathName, int flags, mode_t mode)
 
 int redirectInput(char* input)
 {
+    // Big thanks to Dr. Keith Bugeja for kindly providing
+    // this method: https://www.youtube.com/watch?v=XflfgbUiHYI
     return(reopen(STDIN_FILENO, input, O_RDONLY, S_IRUSR));
 }
 
 int redirectOutput(char* output, int appendFlag)
 {
+    // Big thanks to Dr. Keith Bugeja for kindly providing
+    // this method: https://www.youtube.com/watch?v=XflfgbUiHYI
     return(reopen(STDOUT_FILENO, output, appendFlag | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH));
 }
 
@@ -67,8 +73,11 @@ int forkExecPipe(char ***pipelineArgs, char* fileIn, char* fileOut, bool appendO
             perror("-tish: fork() failed");
             return EXIT_FAILURE;
         }
+
+        // Child Process
         else if (childPID == 0)
         {
+            // All stages except the last
             if (stage < pipeCount)
             {
                 if (close(currFd[0]) == -1)
@@ -88,18 +97,23 @@ int forkExecPipe(char ***pipelineArgs, char* fileIn, char* fileOut, bool appendO
                 }
             }
 
+            // Set up input redirection (First stage)
             if (stage == 0 && fileIn != NULL)
             {
+                
                 if (redirectInput(fileIn) == -1)
                 {
                     perror("-tish: redirect failed!");
                     return EXIT_FAILURE;
                 }
             }
+            // Set up Output Redirection (Last stage)
             else if (stage == pipeCount && fileOut != NULL)
-            {
+            {   
+                
                 int returnOut;
                 if (appendOut)
+                    // Append Output Redirection
                     returnOut = redirectOutput(fileOut, O_RDWR | O_APPEND);
                 else
                     returnOut = redirectOutput(fileOut, O_RDWR | O_TRUNC);
@@ -111,6 +125,7 @@ int forkExecPipe(char ***pipelineArgs, char* fileIn, char* fileOut, bool appendO
                 }
             }
 
+            // All stages except the first
             if (stage > 0)
             {
                 if (close(prevFd[1]) == -1)
@@ -130,6 +145,7 @@ int forkExecPipe(char ***pipelineArgs, char* fileIn, char* fileOut, bool appendO
                 }
             }
 
+            // Execution!
             if (execvp(pipelineArgs[stage][0], pipelineArgs[stage]) == -1)
             {
                 perror("-tish: execvp() failed");
@@ -137,7 +153,8 @@ int forkExecPipe(char ***pipelineArgs, char* fileIn, char* fileOut, bool appendO
             }
             return EXIT_SUCCESS;
         }
-
+        
+        // Parent Process
         if (stage >= 1)
         {
             if (close(prevFd[0]) == -1 || close(prevFd[1]) == -1)
