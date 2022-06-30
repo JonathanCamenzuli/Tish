@@ -18,6 +18,10 @@
 
 #define TF_STR_BUFFER_LEN   512
 
+/**
+ * @brief Array containing the logo displayed in tfetch
+ *     
+ */
 extern char asciiTishLogo[LOGO_ROWS][LOGO_COLS];
 
 /**
@@ -54,13 +58,6 @@ void getKernel(char* kernelStr);
  * @param kernelStr Pointer to store the shell itself
  */
 void getShell(char* shellStr);
-
-/**
- * @brief Get the colors with ANSI escape codes
- * 
- * @param colours Pointer to store colours itself
- */
-void getColors(char* colours);
 
 /**
  * @brief Main function to be called

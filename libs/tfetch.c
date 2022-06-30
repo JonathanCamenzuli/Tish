@@ -104,17 +104,6 @@ void getShell(char* shellStr)
     strcat(shellStr, RESET_ANSI);
 }
 
-void getColors(char* colours)
-{
-    char* colour = colours;
-
-    for(int i = 0; i < 8; i++) {
-        sprintf(colour, "\e[4%dm   ", i);
-        colour += 8;
-    }
-    snprintf(colour, 5, "\e[0m");
-}
-
 void tfetch(void)
 {
     char tfetchTitle[TF_STR_BUFFER_LEN];
@@ -122,16 +111,14 @@ void tfetch(void)
     char os[TF_STR_BUFFER_LEN];
     char kernel[TF_STR_BUFFER_LEN];
     char shell[TF_STR_BUFFER_LEN];
-    char colours[TF_STR_BUFFER_LEN];
 
     getTfetchTitle(tfetchTitle);
     getLineUnderTitle(linesUnderTitle);
     getOS(os);
     getKernel(kernel);
     getShell(shell);
-    getColors(colours);
 
-    printf("%s   %s\n", asciiTishLogo[0], tfetchTitle);
+    printf("\n\n%s   %s\n", asciiTishLogo[0], tfetchTitle);
     printf("%s   %s\n", asciiTishLogo[1], linesUnderTitle);
     printf("%s   %s\n", asciiTishLogo[2], os);
     printf("%s   %s\n", asciiTishLogo[3], kernel);

@@ -140,7 +140,7 @@ int getRedirType(char* token);
 void createPipeline(char* inputBuffer);
 
 /**
- * @brief Processes the input made by the user in Tiny Shell
+ * @brief Processes the input made by the user in Tiny SHell
  * 
  * @param inputBuffer Self-explanory
  */

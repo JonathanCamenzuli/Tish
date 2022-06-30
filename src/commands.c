@@ -1,4 +1,5 @@
 #include "commands.h"
+#include "../libs/tfetch.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -6,8 +7,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/wait.h>
-
-#include "../libs/tfetch.h"
 
 int exit_tish(char** args)
 {
@@ -51,7 +50,7 @@ int cwd_tish(char** args)
 
 int ver_tish(char** args)
 {
-    setenv("SHELL", "Tiny Shell (tish) version 1.0", 1);
+    setenv("SHELL", "Tiny SHell (tish) version 1.0", 1);
     tfetch();
     return EXIT_SUCCESS;
 }

@@ -10,7 +10,7 @@
 const char specialTishChars[] = {'~', '`', '#', '$', '&', '*',
                                  '(', ')', '[', ']', '{', '}',
                                  ':', '=', '?', '/', '!', '@',
-                                 '+', '%', '\'','"', '|', '>',
+                                 '+', '%', '\'',QMARK_CHAR, '|', '>',
                                  '<', SCOLON_CHAR, BSLASH_CHAR};
 
 string_t* initStr()
@@ -173,22 +173,13 @@ void createPipeline(char* inputBuffer)
     bool quoteComplete = false;
 
     for (char** ch_i = tokens; *ch_i != NULL; ++ch_i)
-    {
-        if (strcmp(tokens[token_i], "\"") == 0 && !quoteFirst)
-            quoteFirst = true;
-        else if (strcmp(tokens[token_i], "\"") == 0 && quoteFirst)
-            quoteComplete = true;
         token_i++;
-    }
 
     // Check for redirection metacharacters at the beginning or end of token
     if (strcmp(tokens[0], ">") == 0 || strcmp(tokens[0], ">>") == 0 || strcmp(tokens[0], "<") == 0 || strcmp(tokens[0], "|") == 0)
         fprintf(stderr, "-tish: syntax error near unexpected token \'%s\'\n", tokens[0]);
     else if (strcmp(tokens[token_i-1], ">") == 0 || strcmp(tokens[token_i-1], ">>") == 0 || strcmp(tokens[token_i-1], "<") == 0 || strcmp(tokens[token_i-1], "|") == 0)
         fprintf(stderr, "-tish: syntax error near unexpected token \'%s\'\n", tokens[token_i-1]);
-    // Check for mismatched quotes
-    else if (quoteComplete)
-        fprintf(stderr, "-tish: syntax error: mismatched quotes\n");
     else if (!isRedirValid(tokens))
     {
         int tishExitCode = execTishCommand(tokens);
