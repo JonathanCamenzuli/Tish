@@ -4,6 +4,10 @@
 CMakeFiles/tish.dir/libs/linenoise.c.o: ../libs/linenoise.c
 CMakeFiles/tish.dir/libs/linenoise.c.o: ../libs/linenoise.h
 
+CMakeFiles/tish.dir/libs/tfetch.c.o: ../libs/tfetch.c
+CMakeFiles/tish.dir/libs/tfetch.c.o: ../libs/tfetch.h
+
+CMakeFiles/tish.dir/src/commands.c.o: ../libs/tfetch.h
 CMakeFiles/tish.dir/src/commands.c.o: ../src/commands.c
 CMakeFiles/tish.dir/src/commands.c.o: ../src/commands.h
 

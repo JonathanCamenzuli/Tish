@@ -70,9 +70,22 @@ CMakeFiles/tish.dir/libs/linenoise.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tish.dir/libs/linenoise.c.s"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/linenoise.c" -o CMakeFiles/tish.dir/libs/linenoise.c.s
 
+CMakeFiles/tish.dir/libs/tfetch.c.o: CMakeFiles/tish.dir/flags.make
+CMakeFiles/tish.dir/libs/tfetch.c.o: ../libs/tfetch.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/tish.dir/libs/tfetch.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tish.dir/libs/tfetch.c.o   -c "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c"
+
+CMakeFiles/tish.dir/libs/tfetch.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/tish.dir/libs/tfetch.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c" > CMakeFiles/tish.dir/libs/tfetch.c.i
+
+CMakeFiles/tish.dir/libs/tfetch.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/tish.dir/libs/tfetch.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c" -o CMakeFiles/tish.dir/libs/tfetch.c.s
+
 CMakeFiles/tish.dir/src/tish.c.o: CMakeFiles/tish.dir/flags.make
 CMakeFiles/tish.dir/src/tish.c.o: ../src/tish.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/tish.dir/src/tish.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/tish.dir/src/tish.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tish.dir/src/tish.c.o   -c "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/tish.c"
 
 CMakeFiles/tish.dir/src/tish.c.i: cmake_force
@@ -85,7 +98,7 @@ CMakeFiles/tish.dir/src/tish.c.s: cmake_force
 
 CMakeFiles/tish.dir/src/io_scanning.c.o: CMakeFiles/tish.dir/flags.make
 CMakeFiles/tish.dir/src/io_scanning.c.o: ../src/io_scanning.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/tish.dir/src/io_scanning.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/tish.dir/src/io_scanning.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tish.dir/src/io_scanning.c.o   -c "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/io_scanning.c"
 
 CMakeFiles/tish.dir/src/io_scanning.c.i: cmake_force
@@ -98,7 +111,7 @@ CMakeFiles/tish.dir/src/io_scanning.c.s: cmake_force
 
 CMakeFiles/tish.dir/src/commands.c.o: CMakeFiles/tish.dir/flags.make
 CMakeFiles/tish.dir/src/commands.c.o: ../src/commands.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/tish.dir/src/commands.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/tish.dir/src/commands.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tish.dir/src/commands.c.o   -c "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c"
 
 CMakeFiles/tish.dir/src/commands.c.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/tish.dir/src/commands.c.s: cmake_force
 
 CMakeFiles/tish.dir/src/proc_control.c.o: CMakeFiles/tish.dir/flags.make
 CMakeFiles/tish.dir/src/proc_control.c.o: ../src/proc_control.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/tish.dir/src/proc_control.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/tish.dir/src/proc_control.c.o"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/tish.dir/src/proc_control.c.o   -c "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/proc_control.c"
 
 CMakeFiles/tish.dir/src/proc_control.c.i: cmake_force
@@ -125,6 +138,7 @@ CMakeFiles/tish.dir/src/proc_control.c.s: cmake_force
 # Object files for target tish
 tish_OBJECTS = \
 "CMakeFiles/tish.dir/libs/linenoise.c.o" \
+"CMakeFiles/tish.dir/libs/tfetch.c.o" \
 "CMakeFiles/tish.dir/src/tish.c.o" \
 "CMakeFiles/tish.dir/src/io_scanning.c.o" \
 "CMakeFiles/tish.dir/src/commands.c.o" \
@@ -134,13 +148,14 @@ tish_OBJECTS = \
 tish_EXTERNAL_OBJECTS =
 
 tish: CMakeFiles/tish.dir/libs/linenoise.c.o
+tish: CMakeFiles/tish.dir/libs/tfetch.c.o
 tish: CMakeFiles/tish.dir/src/tish.c.o
 tish: CMakeFiles/tish.dir/src/io_scanning.c.o
 tish: CMakeFiles/tish.dir/src/commands.c.o
 tish: CMakeFiles/tish.dir/src/proc_control.c.o
 tish: CMakeFiles/tish.dir/build.make
 tish: CMakeFiles/tish.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable tish"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable tish"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tish.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

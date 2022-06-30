@@ -6,6 +6,11 @@
 },
 {
   "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
+  "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/libs/tfetch.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c\"",
+  "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c"
+},
+{
+  "directory": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/build",
   "command": "/usr/bin/gcc   -g   -o CMakeFiles/tish.dir/src/tish.c.o   -c \"/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/tish.c\"",
   "file": "/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/tish.c"
 },

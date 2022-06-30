@@ -4,7 +4,11 @@
 CMakeFiles/tish.dir/libs/linenoise.c.o
  /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/linenoise.c
  /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/linenoise.h
+CMakeFiles/tish.dir/libs/tfetch.c.o
+ /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c
+ /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
 CMakeFiles/tish.dir/src/commands.c.o
+ /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
  /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c
  /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
 CMakeFiles/tish.dir/src/io_scanning.c.o

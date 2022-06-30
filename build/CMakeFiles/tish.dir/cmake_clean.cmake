@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/tish.dir/libs/linenoise.c.o"
+  "CMakeFiles/tish.dir/libs/tfetch.c.o"
   "CMakeFiles/tish.dir/src/commands.c.o"
   "CMakeFiles/tish.dir/src/io_scanning.c.o"
   "CMakeFiles/tish.dir/src/proc_control.c.o"

@@ -172,6 +172,33 @@ libs/linenoise.c.s:
 	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/linenoise.c.s
 .PHONY : libs/linenoise.c.s
 
+libs/tfetch.o: libs/tfetch.c.o
+
+.PHONY : libs/tfetch.o
+
+# target to build an object file
+libs/tfetch.c.o:
+	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/tfetch.c.o
+.PHONY : libs/tfetch.c.o
+
+libs/tfetch.i: libs/tfetch.c.i
+
+.PHONY : libs/tfetch.i
+
+# target to preprocess a source file
+libs/tfetch.c.i:
+	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/tfetch.c.i
+.PHONY : libs/tfetch.c.i
+
+libs/tfetch.s: libs/tfetch.c.s
+
+.PHONY : libs/tfetch.s
+
+# target to generate assembly for a file
+libs/tfetch.c.s:
+	$(MAKE) -f CMakeFiles/tish.dir/build.make CMakeFiles/tish.dir/libs/tfetch.c.s
+.PHONY : libs/tfetch.c.s
+
 src/commands.o: src/commands.c.o
 
 .PHONY : src/commands.o
@@ -294,6 +321,9 @@ help:
 	@echo "... libs/linenoise.o"
 	@echo "... libs/linenoise.i"
 	@echo "... libs/linenoise.s"
+	@echo "... libs/tfetch.o"
+	@echo "... libs/tfetch.i"
+	@echo "... libs/tfetch.s"
 	@echo "... src/commands.o"
 	@echo "... src/commands.i"
 	@echo "... src/commands.s"

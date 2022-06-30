@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
+
 /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c
 commands.h
 /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
@@ -23,6 +25,8 @@ string.h
 -
 sys/wait.h
 -
+../libs/tfetch.h
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
 
 /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
 
