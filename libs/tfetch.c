@@ -2,18 +2,20 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
 
-const char ansiTishLogo[8][40] = {
-    "   /$$     /$$           /$$      ",//OK
-    "  | $$    |__/          | $$      ",//OK
-    " /$$$$$$   /$$  /$$$$$$$| $$$$$$$ ",//OK
+char asciiTishLogo[LOGO_ROWS][LOGO_COLS] = {
+    "   /$$     /$$           /$$      ",
+    "  | $$    |__/          | $$      ",
+    " /$$$$$$   /$$  /$$$$$$$| $$$$$$$ ",
     "|_  $$_/  | $$ /$$_____/| $$__  $$",
     "  | $$    | $$|  $$$$$$ | $$  \\ $$",
     "  | $$ /$$| $$ \\____  $$| $$  | $$",
     "  |  $$$$/| $$ /$$$$$$$/| $$  | $$",
     "   \\___/  |__/|_______/ |__/  |__/",
+    "                                   ",
     };
 
 void getTfetchTitle(char* tfetchTitle)
@@ -27,7 +29,7 @@ void getTfetchTitle(char* tfetchTitle)
     strcat(tfetchTitle, RESET_ANSI);
 }
 
-void getLinesUnderTitle(char* lines)
+void getLineUnderTitle(char* lines)
 {
     int count = 1;
     char tfetchTitle[TF_STR_BUFFER_LEN];
@@ -123,18 +125,19 @@ void tfetch(void)
     char colours[TF_STR_BUFFER_LEN];
 
     getTfetchTitle(tfetchTitle);
-    getLinesUnderTitle(linesUnderTitle);
+    getLineUnderTitle(linesUnderTitle);
     getOS(os);
     getKernel(kernel);
     getShell(shell);
     getColors(colours);
 
-    printf("%s   %s\n", ansiTishLogo[0], tfetchTitle);
-    printf("%s   %s\n", ansiTishLogo[1], linesUnderTitle);
-    printf("%s   %s\n", ansiTishLogo[2], os);
-    printf("%s   %s\n", ansiTishLogo[3], kernel);
-    printf("%s   %s\n", ansiTishLogo[4], shell);
-    printf("%s     \n", ansiTishLogo[5]);
-    printf("%s     \n", ansiTishLogo[6]);
-    printf("%s   %s\n\n", ansiTishLogo[7], colours);
+    printf("%s   %s\n", asciiTishLogo[0], tfetchTitle);
+    printf("%s   %s\n", asciiTishLogo[1], linesUnderTitle);
+    printf("%s   %s\n", asciiTishLogo[2], os);
+    printf("%s   %s\n", asciiTishLogo[3], kernel);
+    printf("%s   %s\n", asciiTishLogo[4], shell);
+    printf("%s   %sAuthor%s: Jonathan Camenzuli, 2022\n", asciiTishLogo[5], GREEN_ANSI, RESET_ANSI);
+    printf("%s     \n", asciiTishLogo[6]);
+    printf("%s   I wish that I was able to \e[0;31mco\e[0;32mlo\e[0;33mur\e[0;34mis\e[0;35me%s the $s\n", asciiTishLogo[7], RESET_ANSI);
+    printf("%s  in the tish logo but I had no time :(\n\n", asciiTishLogo[8]);
 }

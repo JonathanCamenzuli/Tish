@@ -52,11 +52,7 @@ int cwd_tish(char** args)
 int ver_tish(char** args)
 {
     setenv("SHELL", "Tiny Shell (tish) version 1.0", 1);
-    puts("tinyshell v1.0");
-    puts("jonathan camenzuli (c) 2022\n");
-
     tfetch();
-
     return EXIT_SUCCESS;
 }
 

@@ -6,27 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.c
+tfetch.h
 /mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
-
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.c
-commands.h
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
-stdlib.h
--
-stdbool.h
--
-unistd.h
--
-fcntl.h
--
 stdio.h
 -
 string.h
 -
-sys/wait.h
+stdlib.h
 -
-../libs/tfetch.h
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
+stdbool.h
+-
+sys/utsname.h
+-
+sys/sysinfo.h
+-
 
-/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/src/commands.h
+/mnt/c/Uni/Y2SEM2/CPS1012-OSs&SP/Assignment/repo/libs/tfetch.h
 
