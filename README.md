@@ -34,7 +34,7 @@ This directory was used in the testing stage of the project.
 ## `CMakeLists.txt`
 Contains the configuration used to build the executable file in CMake.
 
-# Build/Compile
+# Compilation
 The executable is available in *`./build/tish`* however, for all intents and purposes, it can produced with the following command, given that the cwd is the root:  *`(cd build && make)`*
 
 Otherwise, if the cwd is *build*, the *`make`* command on its own will suffice. Please note that both build methods require CMake.
